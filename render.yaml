@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: casseus-wellness
+    runtime: node
+    plan: starter
+    buildCommand: ""
+    startCommand: node backend/server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: OWNER_EMAIL
+        value: casseus137@gmail.com
+      - key: PUBLIC_URL
+        value: https://casseuswellness.com
+      - key: NODE_VERSION
+        value: "20"
