@@ -1,17 +1,17 @@
 :root {
-  --navy: #1e3d52;
-  --navy-dark: #142833;
-  --navy-light: #2a5166;
-  --teal: #4d8a7a;
-  --teal-dark: #3a6d62;
-  --green: #5a8f7a;
-  --lime: #7eaa96;
+  --navy: #1a3a4d;
+  --navy-dark: #102833;
+  --navy-light: #2c5163;
+  --teal: #5b8a78;
+  --teal-dark: #3f6d5e;
+  --green: #6b9a82;
+  --lime: #8fb89c;
   --white: #ffffff;
-  --off-white: #eef3f1;
-  --gray: #5a6e74;
-  --gray-light: #d4e0dc;
+  --off-white: #eef3f2;
+  --gray: #5c6e76;
+  --gray-light: #d7e0e2;
   --red: #ef4444;
-  --shadow: 0 10px 40px rgba(20, 40, 51, 0.16);
+  --shadow: 0 10px 40px rgba(16, 40, 51, 0.16);
   --radius: 12px;
   --transition: all 0.3s ease;
 }
@@ -52,7 +52,7 @@ h1, h2, h3, h4, .logo-main, .price-amount, .stat-num {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(20, 40, 51, 0.96);
+  background: rgba(10, 37, 64, 0.95);
   backdrop-filter: blur(12px);
   transition: var(--transition);
 }
