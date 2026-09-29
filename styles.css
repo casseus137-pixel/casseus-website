@@ -53,7 +53,7 @@ h1, h2, h3, h4, .logo-main, .price-amount, .stat-num {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(10, 37, 64, 0.95);
+  background: rgba(20, 40, 51, 0.96);
   backdrop-filter: blur(12px);
   transition: var(--transition);
 }
