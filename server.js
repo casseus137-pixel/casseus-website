@@ -26,7 +26,7 @@ loadEnv();
 
 const PORT = Number(process.env.PORT || 3001);
 const OWNER_EMAIL = process.env.OWNER_EMAIL || 'casseus137@gmail.com';
-const SITE_ROOT = path.join(__dirname, '..');
+const SITE_ROOT = __dirname;
 const DATA_DIR = path.join(__dirname, 'data');
 
 function ensureDataDir() {
