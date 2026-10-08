@@ -37,14 +37,24 @@
 </head>
 <body>
   <header>
-    <strong>CASSEUS WELLNESS HUB</strong>
+    <strong><img src="casseus-logo.jpg" alt="Casseus Health & Wellness logo" style="height:42px;width:42px;border-radius:50%;vertical-align:middle;margin-right:8px" />CASSEUS WELLNESS HUB</strong>
     <div><a href="index.html">Home</a><a href="member-portal.html">Members</a><a href="store.html">Shop</a></div>
   </header>
   <p class="note">Doorstep stretching and training in Tampa, Bradenton, and Sarasota. Tools here are estimates, not medical advice. Book at 240-571-7253.</p>
   <main>
     <nav id="nav"></nav>
     <div>
-      <section id="dash" class="active">
+      <section id="clips" class="active">
+        <h1>Session photos</h1>
+        <p class="muted">Doorstep and garage sessions. Book a visit at 240-571-7253.</p>
+        <div class="grid">
+          <article class="item"><img src="do-it-ropes.jpg" alt="Battle rope session" style="width:100%;border-radius:10px"><h3>Do it for you</h3><p>Driveway battle ropes.</p></article>
+          <article class="item"><img src="hustle-shine.jpg" alt="Garage dumbbell session" style="width:100%;border-radius:10px"><h3>Hustle and shine</h3><p>Garage session. No gym required.</p></article>
+          <article class="item"><img src="mindset-bench.jpg" alt="Bench press session" style="width:100%;border-radius:10px"><h3>Your mindset</h3><p>Once you change one thing, you can attack everything.</p></article>
+          <article class="item"><img src="bird-dog-photo.jpg" alt="Home bird dog" style="width:100%;border-radius:10px"><h3>Home bird dog</h3><p>Driveway session. We come to you.</p></article>
+        </div>
+      </section>
+      <section id="dash">
         <h1>Your day</h1>
         <p class="muted" id="quote"></p>
         <div class="grid">
@@ -56,6 +66,12 @@
       </section>
       <section id="workouts">
         <h1>Workout library</h1>
+        <div class="grid">
+          <article class="item"><img src="do-it-ropes.jpg" alt="Battle rope session" style="width:100%;border-radius:10px"><h3>Do it for you</h3></article>
+          <article class="item"><img src="hustle-shine.jpg" alt="Garage dumbbell session" style="width:100%;border-radius:10px"><h3>Hustle and shine</h3></article>
+          <article class="item"><img src="mindset-bench.jpg" alt="Bench press session" style="width:100%;border-radius:10px"><h3>Your mindset</h3></article>
+          <article class="item"><img src="bird-dog-photo.jpg" alt="Home bird dog" style="width:100%;border-radius:10px"><h3>Home bird dog</h3></article>
+        </div>
         <div class="filters">
           <select id="level"><option>All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select>
           <select id="place"><option>Home or gym</option><option>Home</option><option>Gym</option></select>
@@ -201,8 +217,8 @@
     const key = "casseus-wellness";
     const load = () => JSON.parse(localStorage.getItem(key) || "{}");
     const save = (data) => localStorage.setItem(key, JSON.stringify(data));
-    const tabs = ["dash","workouts","quiz","progress","generator","challenges","calc","calm","mood","wheel","journal","recipes","meals","nutrition","community","stories","events","coach","habits","body","sleep","vision"];
-    const labels = ["Dashboard","Workouts","Quiz","Progress","Generator","Challenges","Calculators","Calm","Mood","Wheel","Journal","Recipes","Meals","Nutrition","Community","Stories","Events","Coach","Habits","Body map","Sleep","Vision"];
+    const tabs = ["clips","dash","workouts","quiz","progress","generator","challenges","calc","calm","mood","wheel","journal","recipes","meals","nutrition","community","stories","events","coach","habits","body","sleep","vision"];
+    const labels = ["Photos","Dashboard","Workouts","Quiz","Progress","Generator","Challenges","Calculators","Calm","Mood","Wheel","Journal","Recipes","Meals","Nutrition","Community","Stories","Events","Coach","Habits","Body map","Sleep","Vision"];
     document.getElementById("nav").innerHTML = tabs.map((id, i) => `<button data-tab="${id}" type="button">${labels[i]}</button>`).join("");
     document.getElementById("nav").onclick = (e) => {
       const id = e.target.dataset.tab; if (!id) return;

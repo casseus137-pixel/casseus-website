@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Owner Dashboard | Casseus Health & Wellness</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    .dash { padding: 118px 0 56px; color: #1a3a4d; }
+    .dash h1, .dash h2 { font-family: Montserrat, sans-serif; margin: 0 0 6px; }
+    .bar { display: flex; justify-content: space-between; gap: 12px; align-items: end; flex-wrap: wrap; margin-bottom: 16px; }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filters button, .export { border: 0; border-radius: 999px; padding: 8px 14px; font-weight: 600; cursor: pointer; background: #fff; color: #1a3a4d; border: 1px solid #d7e3df; }
+    .filters button.active { background: #1a3a4d; color: #fff; border-color: #1a3a4d; }
+    .export { background: linear-gradient(135deg, #5b8a78, #3f6d5e); color: #fff; border: 0; }
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px; }
+    .card { background: #fff; border-radius: 14px; box-shadow: 0 10px 40px rgba(20,40,51,.1); padding: 16px; }
+    .k { color: #64748b; font-size: .8rem; }
+    .v { font-family: Montserrat, sans-serif; font-size: 1.45rem; margin-top: 4px; }
+    .sub { color: #3f6d5e; font-size: .8rem; }
+    .grid2 { display: grid; grid-template-columns: 1.2fr .8fr; gap: 12px; margin-bottom: 12px; }
+    .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    th, td { text-align: left; padding: 8px 4px; border-bottom: 1px solid #e4eeeb; }
+    th { color: #64748b; font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; }
+    .pill { background: #e7f1ed; color: #3f6d5e; border-radius: 999px; padding: 2px 8px; font-size: .75rem; font-weight: 700; }
+    .break { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
+    .break h3 { margin: 0 0 4px; font-size: 1rem; }
+    .line { display: flex; justify-content: space-between; gap: 8px; padding: 6px 0; border-bottom: 1px solid #e4eeeb; font-size: .9rem; }
+    @media (max-width: 900px) { .kpis, .grid2, .grid3, .break { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="header scrolled" id="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><img src="casseus-logo.jpg" alt="Casseus Health & Wellness logo" /></div>
+        <div class="logo-text"><span class="logo-main">CASSEUS</span><span class="logo-sub">HEALTH & WELLNESS</span></div>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#booking">Book</a>
+        <a href="store.html">Shop</a>
+        <a href="member-portal.html">Members</a>
+        <a href="superstars.html">Superstars</a>
+        <a href="dashboard.html" class="active-page">Dashboard</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </header>
+  <main class="dash">
+    <div class="container">
+      <div class="bar">
+        <div>
+          <h1>Owner dashboard</h1>
+          <p class="muted">Bookings, session sales, shop, outreach, corporate, and referrals. Week starts Sunday. Month to date is October 2026.</p>
+        </div>
+        <div class="filters">
+          <button data-range="week" type="button">This week</button>
+          <button data-range="month" class="active" type="button">This month</button>
+          <button data-range="all" type="button">All</button>
+          <button class="export" id="csv" type="button">Download CSV</button>
+          <a class="export" href="casseus-owner-dashboard.xlsx">Excel workbook</a>
+        </div>
+      </div>
+      <section id="ownerGate" class="card" style="max-width:460px;margin:0 auto 16px">
+        <h2>Owner only</h2>
+        <p class="muted">Members and visitors cannot open this dashboard. Sign in with the owner portal login.</p>
+        <form id="ownerForm">
+          <input id="ownerEmail" type="email" placeholder="Owner email" required />
+          <input id="ownerPass" type="password" placeholder="Password" required style="margin-top:8px" />
+          <button class="export" type="submit" style="margin-top:10px">Open dashboard</button>
+        </form>
+      </section>
+      <section id="ownerApp" hidden>
+      <section class="card" id="breakdown"></section>
+      <section class="grid2">
+        <article class="card"><h2>Sales by line</h2><canvas id="salesChart" height="140"></canvas></article>
+        <article class="card"><h2>Bookings</h2><canvas id="bookChart" height="140"></canvas></article>
+      </section>
+      <section class="grid3">
+        <article class="card"><h2>Bookings</h2><table><thead><tr><th>When</th><th>Member</th><th>Service</th></tr></thead><tbody id="bookRows"></tbody></table></article>
+        <article class="card"><h2>Sales</h2><table><thead><tr><th>Item</th><th>Line</th><th>Amount</th></tr></thead><tbody id="saleRows"></tbody></table></article>
+        <article class="card"><h2>Testimonials</h2><table><thead><tr><th>Member</th><th>Note</th></tr></thead><tbody id="starRows"></tbody></table></article>
+      </section>
+      <section class="grid2" style="margin-top:12px">
+        <article class="card"><h2>Referrals and outreach</h2><table><thead><tr><th>Type</th><th>Name</th><th>Status</th><th>Value</th></tr></thead><tbody id="partnerRows"></tbody></table></article>
+        <article class="card"><h2>Corporate</h2><table><thead><tr><th>Organization</th><th>Service</th><th>Amount</th></tr></thead><tbody id="corpRows"></tbody></table></article>
+      </section>
+      </section>
+      </section>
+    </div>
+  </main>
+  <script src="script.js"></script>
+  <script>
+    const TODAY = new Date("2026-10-01T12:00:00");
+    const sales = [
+      { date: "2026-09-28", line: "Session packages", item: "60-min PT · 2x/week", amount: 865, kind: "package" },
+      { date: "2026-09-29", line: "Single sessions", item: "60-min PT single", amount: 120, kind: "single" },
+      { date: "2026-09-30", line: "Apparel", item: "Casseus training tee", amount: 32, kind: "apparel" },
+      { date: "2026-09-30", line: "Natural products", item: "Foam roller", amount: 25.74, kind: "products" },
+      { date: "2026-10-01", line: "Session packages", item: "30-min stretch · 3x/week", amount: 715, kind: "package" },
+      { date: "2026-10-01", line: "Single sessions", item: "30-min stretch single", amount: 65, kind: "single" },
+      { date: "2026-10-01", line: "Single sessions", item: "30-min PT single", amount: 75, kind: "single" },
+      { date: "2026-10-01", line: "Natural supplements", item: "Electrolyte powder", amount: 23.68, kind: "supplements" },
+      { date: "2026-10-01", line: "Natural supplements", item: "Rhodiola Rosea", amount: 19.04, kind: "supplements" },
+      { date: "2026-10-01", line: "Natural products", item: "Stretch strap", amount: 15.44, kind: "products" },
+      { date: "2026-10-01", line: "Apparel", item: "Mobility hoodie", amount: 48, kind: "apparel" },
+      { date: "2026-10-02", line: "Corporate sales", item: "Stretch · 8 people", amount: 425, kind: "corporate" },
+      { date: "2026-10-03", line: "Outreach collaborations", item: "Gym lobby pop-up", amount: 0, kind: "outreach" }
+    ];
+    const bookings = [
+      { date: "2026-09-29", name: "Jordan Lee", service: "60-min PT", area: "Sarasota" },
+      { date: "2026-09-30", name: "Sam Patel", service: "30-min stretch", area: "Bradenton" },
+      { date: "2026-10-01", name: "Alex Rivera", service: "30-min stretch", area: "Tampa" },
+      { date: "2026-10-02", name: "Alex Rivera", service: "30-min stretch", area: "Tampa" },
+      { date: "2026-10-02", name: "Bayfront HR", service: "Corporate stretch", area: "Tampa" },
+      { date: "2026-10-05", name: "Alex Rivera", service: "30-min stretch", area: "Tampa" },
+      { date: "2026-10-06", name: "Nina Cole", service: "30-min PT single", area: "Bradenton" }
+    ];
+    const stars = [
+      { date: "2026-10-01", name: "Alex R.", quote: "Hip tightness is down after three doorstep stretches." },
+      { date: "2026-09-27", name: "Jordan L.", quote: "Posture at the desk is better after two weeks." }
+    ];
+    const partners = [
+      { date: "2026-10-01", type: "Referral", name: "Alex → Nina", status: "Paid session", value: 25 },
+      { date: "2026-09-26", type: "Referral", name: "Jordan → Sam", status: "Package started", value: 25 },
+      { date: "2026-10-03", type: "Outreach", name: "Harbour Gym", status: "Lobby collaboration", value: 0 },
+      { date: "2026-09-20", type: "Outreach", name: "Sarasota run club", status: "Intro scheduled", value: 0 }
+    ];
+    const corporate = [
+      { date: "2026-10-02", org: "Bayfront HR", service: "Group stretch · 8", amount: 425 },
+      { date: "2026-09-18", org: "Palm Offices", service: "Monthly plan · 4 visits", amount: 1530 }
+    ];
+    const money = (n) => n.toLocaleString("en-US", { style: "currency", currency: "USD" });
+    const inRange = (iso, range) => {
+      const d = new Date(iso + "T12:00:00");
+      if (range === "all") return true;
+      if (range === "month") return d.getMonth() === TODAY.getMonth() && d.getFullYear() === TODAY.getFullYear();
+      const start = new Date(TODAY); start.setDate(TODAY.getDate() - TODAY.getDay()); start.setHours(0,0,0,0);
+      const end = new Date(start); end.setDate(start.getDate() + 6); end.setHours(23,59,59,999);
+      return d >= start && d <= end;
+    };
+    let salesChart, bookChart, range = "month";
+    function sum(list, pred) { return list.filter(pred).reduce((s, r) => s + (r.amount || r.value || 0), 0); }
+    function render() {
+      const s = sales.filter((r) => inRange(r.date, range));
+      const b = bookings.filter((r) => inRange(r.date, range));
+      const t = stars.filter((r) => inRange(r.date, range));
+      const p = partners.filter((r) => inRange(r.date, range));
+      const c = corporate.filter((r) => inRange(r.date, range));
+      const weekBooks = bookings.filter((r) => inRange(r.date, "week")).length;
+      const monthBooks = bookings.filter((r) => inRange(r.date, "month")).length;
+      const sessionMtd = sales.filter((r) => inRange(r.date, "month") && (r.kind === "package" || r.kind === "single")).reduce((n, r) => n + r.amount, 0);
+      const singles = s.filter((r) => r.kind === "single");
+      const cards = [
+        ["Bookings this week", weekBooks, "Sunday–Saturday"],
+        ["Bookings this month", monthBooks, "October"],
+        ["Session sales MTD", money(sessionMtd), "Packages + singles"],
+        ["Single sessions bought", singles.length, money(singles.reduce((n, r) => n + r.amount, 0))],
+        ["Apparel", money(sum(s, (r) => r.kind === "apparel")), "Tees and hoodies"],
+        ["Natural products", money(sum(s, (r) => r.kind === "products")), "Recovery and mobility"],
+        ["Natural supplements", money(sum(s, (r) => r.kind === "supplements")), "Shop supplements"],
+        ["Corporate sales", money(c.reduce((n, r) => n + r.amount, 0)), c.length + " invoices"],
+        ["Outreach collaborations", p.filter((r) => r.type === "Outreach").length, "Partners in range"],
+        ["Referral program", money(p.filter((r) => r.type === "Referral").reduce((n, r) => n + r.value, 0)), "Credits earned"],
+        ["Testimonials", t.length, "Member posts only"],
+        ["Shop + corporate", money(s.reduce((n, r) => n + r.amount, 0) + c.filter((r) => !s.some((x) => x.item === r.service)).reduce((n, r) => n + r.amount, 0)), "Selected range"]
+      ];
+      document.getElementById("kpis").innerHTML = cards.map((c) => `<article class="card"><div class="k">${c[0]}</div><div class="v">${c[1]}</div><div class="sub">${c[2]}</div></article>`).join("");
+      const groups = [
+        ["Bookings this week", bookings.filter((r) => inRange(r.date, "week")).map((r) => r.date + " · " + r.name + " · " + r.service + " · " + r.area)],
+        ["Bookings this month", bookings.filter((r) => inRange(r.date, "month")).map((r) => r.date + " · " + r.name + " · " + r.service + " · " + r.area)],
+        ["Session packages", s.filter((r) => r.kind === "package").map((r) => r.date + " · " + r.item + " · " + money(r.amount))],
+        ["Single sessions", s.filter((r) => r.kind === "single").map((r) => r.date + " · " + r.item + " · " + money(r.amount))],
+        ["Apparel", s.filter((r) => r.kind === "apparel").map((r) => r.date + " · " + r.item + " · " + money(r.amount))],
+        ["Natural products", s.filter((r) => r.kind === "products").map((r) => r.date + " · " + r.item + " · " + money(r.amount))],
+        ["Natural supplements", s.filter((r) => r.kind === "supplements").map((r) => r.date + " · " + r.item + " · " + money(r.amount))],
+        ["Corporate sales", c.map((r) => r.date + " · " + r.org + " · " + r.service + " · " + money(r.amount))],
+        ["Outreach collaborations", p.filter((r) => r.type === "Outreach").map((r) => r.date + " · " + r.name + " · " + r.status)],
+        ["Referral program", p.filter((r) => r.type === "Referral").map((r) => r.date + " · " + r.name + " · " + r.status + " · " + money(r.value))],
+        ["Testimonials", t.map((r) => r.date + " · " + r.name + " · " + r.quote)]
+      ];
+      document.getElementById("breakdown").innerHTML = "<h2>Breakdown</h2><div class='break'>" + groups.map((g) => `<div><h3>${g[0]}</h3>${g[1].length ? g[1].map((line) => `<div class='line'><span>${line}</span></div>`).join("") : "<p class='muted'>None in this range.</p>"}</div>`).join("") + "</div>";
+      const lines = ["Session packages", "Single sessions", "Apparel", "Natural products", "Natural supplements", "Corporate sales", "Outreach collaborations"];
+      const lineValues = lines.map((line) => s.filter((r) => r.line === line).reduce((n, r) => n + r.amount, 0));
+      if (salesChart) salesChart.destroy();
+      salesChart = new Chart(document.getElementById("salesChart"), {
+        type: "bar",
+        data: { labels: lines, datasets: [{ data: lineValues, backgroundColor: "#5b8a78" }] },
+        options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+      });
+      if (bookChart) bookChart.destroy();
+      bookChart = new Chart(document.getElementById("bookChart"), {
+        type: "doughnut",
+        data: { labels: ["This week", "Rest of month"], datasets: [{ data: [weekBooks, Math.max(monthBooks - weekBooks, 0)], backgroundColor: ["#1a3a4d", "#8fbfae"] }] },
+        options: { plugins: { legend: { position: "bottom" } } }
+      });
+      document.getElementById("bookRows").innerHTML = b.map((r) => `<tr><td>${r.date}</td><td>${r.name}</td><td>${r.service}</td></tr>`).join("") || "<tr><td colspan='3'>None in this range.</td></tr>";
+      document.getElementById("saleRows").innerHTML = s.map((r) => `<tr><td>${r.item}</td><td><span class="pill">${r.line}</span></td><td>${money(r.amount)}</td></tr>`).join("") || "<tr><td colspan='3'>None in this range.</td></tr>";
+      document.getElementById("starRows").innerHTML = t.map((r) => `<tr><td>${r.name}</td><td>${r.quote}</td></tr>`).join("") || "<tr><td colspan='2'>None in this range.</td></tr>";
+      document.getElementById("partnerRows").innerHTML = p.map((r) => `<tr><td>${r.type}</td><td>${r.name}</td><td>${r.status}</td><td>${money(r.value)}</td></tr>`).join("") || "<tr><td colspan='4'>None in this range.</td></tr>";
+      document.getElementById("corpRows").innerHTML = c.map((r) => `<tr><td>${r.org}</td><td>${r.service}</td><td>${money(r.amount)}</td></tr>`).join("") || "<tr><td colspan='3'>None in this range.</td></tr>";
+    }
+    document.querySelectorAll(".filters button[data-range]").forEach((btn) => btn.addEventListener("click", () => {
+      range = btn.dataset.range;
+      document.querySelectorAll(".filters button[data-range]").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      render();
+    }));
+    document.getElementById("csv").addEventListener("click", () => {
+      const rows = [["record_type","date","name","line","item","amount_usd","status","area"]];
+      sales.forEach((r) => rows.push(["sale", r.date, "", r.line, r.item, r.amount, "", ""]));
+      bookings.forEach((r) => rows.push(["booking", r.date, r.name, "Booking", r.service, "", "Booked", r.area]));
+      stars.forEach((r) => rows.push(["testimonial", r.date, r.name, "Testimonial", r.quote, "", "Member", ""]));
+      partners.forEach((r) => rows.push([r.type.toLowerCase(), r.date, r.name, r.type, r.status, r.value, r.status, ""]));
+      corporate.forEach((r) => rows.push(["corporate", r.date, r.org, "Corporate sales", r.service, r.amount, "Invoiced", ""]));
+      const csv = rows.map((row) => row.map((cell) => '"' + String(cell).replace(/"/g, '""') + '"').join(",")).join("\n");
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
+      a.download = "casseus-owner-dashboard.csv";
+      a.click();
+    });
+    function unlock() {
+      document.getElementById("ownerGate").hidden = true;
+      document.getElementById("ownerApp").hidden = false;
+      render();
+    }
+    document.getElementById("ownerForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (document.getElementById("ownerEmail").value.trim().toLowerCase() === "will@casseuswellness.com" && document.getElementById("ownerPass").value === "portal-owner") {
+        localStorage.setItem("casseus-owner", "1");
+        unlock();
+      }
+    });
+    if (localStorage.getItem("casseus-owner") === "1") unlock();
+  </script>
+</body>
+</html>
