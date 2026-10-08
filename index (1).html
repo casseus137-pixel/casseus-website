@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1a3a4d">
+  <link rel="icon" href="casseus-logo.jpg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="casseus-logo.jpg">
+  <meta property="og:title" content="Casseus Health & Wellness | Mobile Personal Training">
+  <meta property="og:description" content="Assisted stretching and personal training at your door in Tampa, Bradenton & Sarasota.">
+  <meta property="og:image" content="assets/538-hero.jpg">
+  <link rel="canonical" href="https://casseuswellness.com/">
+  <meta property="og:url" content="https://casseuswellness.com/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Casseus Health & Wellness | Mobile Personal Training</title>
+  <meta name="description" content="Mobile Personal Training and Assisted Stretching in Tampa, Bradenton & Sarasota, FL. Improve mobility, relieve back pain, personalized fitness programs.">
+  <link rel="preload" as="image" href="assets/538-hero.webp" type="image/webp" fetchpriority="high">
+  <style id="critical-css">
+:root{--navy:#1a3a4d;--navy-dark:#102833;--teal:#5b8a78;--teal-dark:#3f6d5e;--green:#6b9a82;--white:#fff;--off-white:#eef3f2;--gray:#64748b;--radius:12px;--transition:all .3s ease}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{font-family:'Open Sans',system-ui,sans-serif;color:var(--navy);background:var(--off-white);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4,.logo-main,.stat-num{font-family:Montserrat,system-ui,sans-serif}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,37,64,.95);backdrop-filter:blur(12px)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white)}
+.logo-icon{width:48px;height:48px;border-radius:50%;overflow:hidden;flex-shrink:0;box-shadow:0 0 0 2px rgba(91,138,120,.35)}.logo-icon img{width:100%;height:100%;object-fit:cover;display:block}
+.logo-text{display:flex;flex-direction:column;line-height:1.15}
+.logo-main{font-weight:800;font-size:1.15rem;letter-spacing:1px}
+.logo-sub{font-size:.65rem;letter-spacing:1.5px;opacity:.85;font-weight:500}
+.nav{display:flex;gap:20px;flex-wrap:wrap}
+.nav a{color:var(--white);text-decoration:none;font-weight:500;font-size:.9rem;opacity:.9}
+.nav-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.4rem;cursor:pointer}
+.hero{min-height:100vh;background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 50%,#1a3a4d 100%);display:flex;align-items:center;position:relative;padding-top:72px;overflow:hidden}
+.hero-bg-picture{position:absolute;top:0;right:0;width:50%;height:100%;margin:0;z-index:1;pointer-events:none}
+.hero-bg-img{width:100%;height:100%;object-fit:cover;object-position:center;opacity:.15;mask-image:linear-gradient(to left,black,transparent);-webkit-mask-image:linear-gradient(to left,black,transparent)}
+.hero-content{position:relative;z-index:2;max-width:700px;padding:60px 0}
+.hero-badge{display:inline-block;background:rgba(91,138,120,.15);border:1px solid rgba(91,138,120,.4);color:var(--teal);padding:8px 16px;border-radius:50px;font-size:.85rem;font-weight:600;margin-bottom:24px;letter-spacing:.5px}
+.hero h1{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:800;color:var(--white);line-height:1.15;margin-bottom:20px}
+.highlight{color:var(--teal)}
+.hero-sub{font-size:1.15rem;color:rgba(255,255,255,.85);margin-bottom:32px;max-width:540px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:48px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:50px;font-weight:600;font-size:.95rem;text-decoration:none;border:none;cursor:pointer;font-family:inherit}
+.btn-primary{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:var(--white);box-shadow:0 4px 20px rgba(91,138,120,.35)}
+.btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.4)}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap}
+.stat{display:flex;flex-direction:column}
+.stat-num{font-size:1.5rem;font-weight:700;color:var(--teal)}
+.stat-label{font-size:.85rem;color:rgba(255,255,255,.7)}
+@media (max-width:900px){
+.nav{display:none;position:absolute;top:72px;left:0;right:0;background:var(--navy);flex-direction:column;padding:20px;gap:16px}
+.nav.open{display:flex}
+.nav-toggle{display:block}
+}
+@media (max-width:768px){
+.hero-bg-picture{width:100%}
+.hero-bg-img{opacity:.12;mask-image:linear-gradient(to top,black 20%,transparent 70%);-webkit-mask-image:linear-gradient(to top,black 20%,transparent 70%)}
+}
+  </style>
+  <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="styles.css"></noscript>
+  <script>
+  (function(){
+    var href='styles.css';
+    function load(){var l=document.createElement('link');l.rel='stylesheet';l.href=href;document.head.appendChild(l);}
+    var link=document.querySelector('link[rel="preload"][href="'+href+'"]');
+    if(link){
+      if(link.sheet){link.rel='stylesheet';}
+      else if(!('onload' in link)){load();}
+    } else {load();}
+  })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  </noscript>
+  <script>
+    /* Async CSS fallback when link.onload is not supported */
+    (function() {
+      function loadStylesheet(href) {
+        var l = document.createElement('link');
+        l.rel = 'stylesheet';
+        l.href = href;
+        document.head.appendChild(l);
+      }
+      var supportsOnload = false;
+      try {
+        supportsOnload = 'onload' in document.createElement('link');
+      } catch (e) {}
+      if (!supportsOnload) {
+        loadStylesheet('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap');
+        loadStylesheet('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+      }
+    })();
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="#home" class="logo">
+        <div class="logo-icon">
+          <img src="casseus-logo.jpg" alt="Casseus Health & Wellness logo">
+        </div>
+        <div class="logo-text">
+          <span class="logo-main">CASSEUS</span>
+          <span class="logo-sub">HEALTH & WELLNESS</span>
+        </div>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#corporate">Corporate</a>
+        <a href="#booking">Book</a>
+        <a href="#free-stretch">Free Stretch</a>
+        <a href="#sessions">Sessions</a>
+        <a href="#videos">Videos</a>
+        <a href="store.html">Shop</a>
+        <a href="wellness-hub.html">Wellness</a>
+        <a href="member-portal.html">Members</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="#referral">Refer</a>
+        <a href="affiliate.html">Affiliates</a>
+        <a href="#questions">Help</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <picture class="hero-bg-picture">
+      <source srcset="assets/538-hero.webp" type="image/webp">
+      <img class="hero-bg-img" src="assets/538-hero.jpg" alt="" width="692" height="1500" fetchpriority="high" decoding="async">
+    </picture>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">Mobile Personal Training • Tampa • Bradenton • Sarasota</div>
+      <h1>Your Wellness.<br><span class="highlight">Your Mobility.</span><br>Your Results.</h1>
+      <p class="hero-sub">Professional doorstep assisted stretching & personalized fitness programs. We come to you with the specialized stretch bench and expert guidance.</p>
+      <div class="hero-cta">
+        <a href="#booking" class="btn btn-primary">Book Free 15-Min Stretch</a>
+        <a href="#pricing" class="btn btn-outline">View Packages</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">1-on-1</span>
+          <span class="stat-label">Personalized Care</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">Mobile</span>
+          <span class="stat-label">To Your Doorstep</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">PNF</span>
+          <span class="stat-label">Assisted Stretching</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What We Offer</span>
+        <h2>360° Wellness & Fitness Experience</h2>
+        <p>Finally, personal training designed for YOU — safe, fun, effective, and delivered at your location.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-hands"></i></div>
+          <h3>Assisted Stretching (PNF)</h3>
+          <p>Deep muscle lengthening on our specialized stretch bench. Achieve angles and resistance impossible alone. Perfect for tension relief and recovery.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-running"></i></div>
+          <h3>Flexibility & Mobility Training</h3>
+          <p>Boost joint range of motion, improve posture, and move better every day. Ideal for desk workers, athletes, and active adults.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-spine"></i><i class="fas fa-user-injured"></i></div>
+          <h3>Posture Correction & Back Pain Relief</h3>
+          <p>Gently align the spine, relieve compressed nerve roots, and reduce chronic lower back and neck tightness.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-dumbbell"></i></div>
+          <h3>Personalized Fitness Programs</h3>
+          <p>Custom strength, bodyweight conditioning, lean muscle gain, and fat loss programs tailored to your goals and lifestyle.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-heart"></i></div>
+          <h3>Stress Reduction</h3>
+          <p>Release muscle tension, calm the nervous system, and leave sessions feeling restored and re-energized.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-truck"></i></div>
+          <h3>Fully Mobile Service</h3>
+          <p>We bring the equipment — stretch bench, bands, weights — right to your home, office, or preferred location in Tampa, Bradenton & Sarasota.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promo Banner -->
+  <section class="promo">
+    <div class="container promo-inner">
+      <div class="promo-content">
+        <h2><span class="highlight">FREE</span> 15-Minute Assisted Mobility Stretch Session!</h2>
+        <p>Experience the Casseus difference. Featuring the specialized Stretch Bench. Limited spots available.</p>
+        <ul class="promo-list">
+          <li><i class="fas fa-check"></i> Improve flexibility & posture</li>
+          <li><i class="fas fa-check"></i> Reduce muscle tension & pain</li>
+          <li><i class="fas fa-check"></i> Boost joint range of motion</li>
+          <li><i class="fas fa-check"></i> Personalized expert guidance</li>
+        </ul>
+        <a href="#booking" class="btn btn-primary">Claim Your Free Session</a>
+      </div>
+      <div class="promo-image">
+        <picture>
+          <source srcset="assets/486.webp" type="image/webp">
+          <img src="assets/486.jpg" alt="Will Casseus assisting a client with a hamstring stretch on the treatment table" width="720" height="900" loading="lazy" decoding="async">
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="sessions">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">On the session</span>
+        <h2>Photos and clips</h2>
+        <p>Assisted stretching, doorstep training, and the flyers you can share. Book the free 15-minute intro at 240-571-7253.</p>
+      </div>
+      <div class="services-grid">
+        <article class="service-card"><img src="will-portrait.jpg" alt="Will Casseus" style="width:100%;border-radius:12px"><h3>Will Casseus</h3><p>NASM-certified mobile trainer. We come to you in Bradenton, Sarasota, and Tampa.</p></article>
+        <article class="service-card"><img src="flyer-every-level.png" alt="Every level, every goal flyer" style="width:100%;border-radius:12px"><h3>Every level. Every goal.</h3><p>One-on-one training from $75 / 30 min.</p></article>
+        <article class="service-card"><img src="flyer-core.png" alt="Core move flyer" style="width:100%;border-radius:12px"><h3>Try this core move</h3><p>Stability-ball core work, coached one-on-one.</p></article>
+        <article class="service-card"><img src="wellness-journey.png" alt="Casseus wellness journey poster" style="width:100%;border-radius:12px"><h3>Start your wellness journey</h3><p>Coaching, lifestyle support, and personalized plans.</p></article>
+      </div>
+      <div class="services-grid" id="videos" style="margin-top:18px">
+        <article class="service-card"><video src="stretch-session.mp4" controls playsinline preload="metadata" style="width:100%;border-radius:12px;background:#102833"></video><h3>Hamstring stretch</h3><p>Assisted stretch on the table. Breathe into it, then relax.</p></article>
+        <article class="service-card"><video src="bird-dog.mp4" controls playsinline preload="metadata" style="width:100%;border-radius:12px;background:#102833"></video><h3>Home bird dog</h3><p>A driveway session. No gym required.</p></article>
+        <article class="service-card"><video src="mindset.mp4" controls playsinline preload="metadata" style="width:100%;border-radius:12px;background:#102833"></video><h3>Mindset set</h3><p>Once you change one thing, you can attack everything.</p></article>
+        <article class="service-card"><video src="do-it-for-you.mp4" controls playsinline preload="metadata" style="width:100%;border-radius:12px;background:#102833"></video><h3>Do it for you</h3><p>Garage and driveway work. Do it tired. Do it for you.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Investment in You</span>
+        <h2>Packages & Pricing</h2>
+        <p>Preloaded monthly packages with built-in savings. Competitive rates for personal training too. Travel fees apply as noted.</p>
+      </div>
+
+      <!-- Travel Notice -->
+      <div class="travel-notice">
+        <i class="fas fa-map-marker-alt"></i>
+        <div>
+          <strong>Doorstep Travel Policy:</strong> Tampa & Bradenton: <span class="free">$0 Travel Fee</span> | Sarasota: <span class="fee">$25 Travel Surcharge</span> 
+          <em>(WAIVED on 4+ session monthly packages)</em>. Mileage and travel fees do apply based on location.
+        </div>
+      </div>
+
+      <div class="travel-notice" style="margin-top:-20px;margin-bottom:36px;">
+        <i class="fas fa-tags"></i>
+        <div>
+          <strong>Package + Product Bundle:</strong> Purchase any monthly package and get <span class="free">10% off</span> all items in our <a href="store.html" style="color:var(--teal-dark);font-weight:700;">Wellness Shop</a>. Discount applies automatically at product checkout while your package is active.
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="pricing-tabs">
+        <button class="tab-btn active" data-tab="stretch-30">30-Min Stretch</button>
+        <button class="tab-btn" data-tab="stretch-60">60-Min Stretch</button>
+        <button class="tab-btn" data-tab="pt-30">30-Min Personal Training</button>
+        <button class="tab-btn" data-tab="pt-60">60-Min Personal Training</button>
+      </div>
+
+      <!-- 30-Min Stretch -->
+      <div class="tab-content active" id="stretch-30">
+        <h3 class="tab-title">30-Minute Express Stretch Packages <span>(Targeted Tension Relief)</span></h3>
+        <div class="pricing-grid">
+          <div class="price-card" data-package="s30-1">
+            <div class="price-freq">1x / Week</div>
+            <div class="price-label">Maintenance</div>
+            <div class="price-sessions">~4.33 sessions/mo</div>
+            <div class="price-amount">$280<span>/mo</span></div>
+            <div class="price-per">$65 / session</div>
+            <div class="price-save">Base Rate</div>
+            <button class="btn btn-primary buy-btn" data-id="s30-1" data-name="30-Min Stretch - 1x/Week" data-price="280">Select Package</button>
+          </div>
+          <div class="price-card popular" data-package="s30-2">
+            <div class="popular-badge">Popular</div>
+            <div class="price-freq">2x / Week</div>
+            <div class="price-label">Flexibility</div>
+            <div class="price-sessions">~8.66 sessions/mo</div>
+            <div class="price-amount">$520<span>/mo</span></div>
+            <div class="price-per">$60 / session</div>
+            <div class="price-save">Save 8%</div>
+            <button class="btn btn-primary buy-btn" data-id="s30-2" data-name="30-Min Stretch - 2x/Week" data-price="520">Select Package</button>
+          </div>
+          <div class="price-card" data-package="s30-3">
+            <div class="price-freq">3x / Week</div>
+            <div class="price-label">Recovery</div>
+            <div class="price-sessions">~13 sessions/mo</div>
+            <div class="price-amount">$715<span>/mo</span></div>
+            <div class="price-per">$55 / session</div>
+            <div class="price-save">Save 15%</div>
+            <button class="btn btn-primary buy-btn" data-id="s30-3" data-name="30-Min Stretch - 3x/Week" data-price="715">Select Package</button>
+          </div>
+          <div class="price-card" data-package="s30-4">
+            <div class="price-freq">4x / Week</div>
+            <div class="price-label">Intense Mobility</div>
+            <div class="price-sessions">~17.33 sessions/mo</div>
+            <div class="price-amount">$865<span>/mo</span></div>
+            <div class="price-per">$50 / session</div>
+            <div class="price-save">Save 23%</div>
+            <button class="btn btn-primary buy-btn" data-id="s30-4" data-name="30-Min Stretch - 4x/Week" data-price="865">Select Package</button>
+          </div>
+          <div class="price-card" data-package="s30-5">
+            <div class="price-freq">5x / Week</div>
+            <div class="price-label">Athlete Focus</div>
+            <div class="price-sessions">~21.66 sessions/mo</div>
+            <div class="price-amount">$975<span>/mo</span></div>
+            <div class="price-per">$45 / session</div>
+            <div class="price-save">Save 31%</div>
+            <button class="btn btn-primary buy-btn" data-id="s30-5" data-name="30-Min Stretch - 5x/Week" data-price="975">Select Package</button>
+          </div>
+          <div class="price-card" data-package="s30-6">
+            <div class="price-freq">6x / Week</div>
+            <div class="price-label">Daily Restoration</div>
+            <div class="price-sessions">~26 sessions/mo</div>
+            <div class="price-amount">$1,040<span>/mo</span></div>
+            <div class="price-per">$40 / session</div>
+            <div class="price-save">Save 38%</div>
+            <button class="btn btn-primary buy-btn" data-id="s30-6" data-name="30-Min Stretch - 6x/Week" data-price="1040">Select Package</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 60-Min Stretch -->
+      <div class="tab-content" id="stretch-60">
+        <h3 class="tab-title">60-Minute Full-Body Stretch Packages <span>(Total Body Reset)</span></h3>
+        <div class="pricing-grid">
+          <div class="price-card" data-package="s60-1">
+            <div class="price-freq">1x / Week</div>
+            <div class="price-label">Maintenance</div>
+            <div class="price-sessions">~4.33 sessions/mo</div>
+            <div class="price-amount">$475<span>/mo</span></div>
+            <div class="price-per">$110 / session</div>
+            <div class="price-save">Base Rate</div>
+            <button class="btn btn-primary buy-btn" data-id="s60-1" data-name="60-Min Stretch - 1x/Week" data-price="475">Select Package</button>
+          </div>
+          <div class="price-card popular" data-package="s60-2">
+            <div class="popular-badge">Popular</div>
+            <div class="price-freq">2x / Week</div>
+            <div class="price-label">Flexibility</div>
+            <div class="price-sessions">~8.66 sessions/mo</div>
+            <div class="price-amount">$865<span>/mo</span></div>
+            <div class="price-per">$100 / session</div>
+            <div class="price-save">Save 9%</div>
+            <button class="btn btn-primary buy-btn" data-id="s60-2" data-name="60-Min Stretch - 2x/Week" data-price="865">Select Package</button>
+          </div>
+          <div class="price-card" data-package="s60-3">
+            <div class="price-freq">3x / Week</div>
+            <div class="price-label">Recovery</div>
+            <div class="price-sessions">~13 sessions/mo</div>
+            <div class="price-amount">$1,235<span>/mo</span></div>
+            <div class="price-per">$95 / session</div>
+            <div class="price-save">Save 14%</div>
+            <button class="btn btn-primary buy-btn" data-id="s60-3" data-name="60-Min Stretch - 3x/Week" data-price="1235">Select Package</button>
+          </div>
+          <div class="price-card" data-package="s60-4">
+            <div class="price-freq">4x / Week</div>
+            <div class="price-label">Intense Mobility</div>
+            <div class="price-sessions">~17.33 sessions/mo</div>
+            <div class="price-amount">$1,560<span>/mo</span></div>
+            <div class="price-per">$90 / session</div>
+            <div class="price-save">Save 18%</div>
+            <button class="btn btn-primary buy-btn" data-id="s60-4" data-name="60-Min Stretch - 4x/Week" data-price="1560">Select Package</button>
+          </div>
+          <div class="price-card" data-package="s60-5">
+            <div class="price-freq">5x / Week</div>
+            <div class="price-label">Athlete Focus</div>
+            <div class="price-sessions">~21.66 sessions/mo</div>
+            <div class="price-amount">$1,840<span>/mo</span></div>
+            <div class="price-per">$85 / session</div>
+            <div class="price-save">Save 23%</div>
+            <button class="btn btn-primary buy-btn" data-id="s60-5" data-name="60-Min Stretch - 5x/Week" data-price="1840">Select Package</button>
+          </div>
+          <div class="price-card" data-package="s60-6">
+            <div class="price-freq">6x / Week</div>
+            <div class="price-label">Daily Restoration</div>
+            <div class="price-sessions">~26 sessions/mo</div>
+            <div class="price-amount">$2,080<span>/mo</span></div>
+            <div class="price-per">$80 / session</div>
+            <div class="price-save">Save 27%</div>
+            <button class="btn btn-primary buy-btn" data-id="s60-6" data-name="60-Min Stretch - 6x/Week" data-price="2080">Select Package</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 30-Min PT -->
+      <div class="tab-content" id="pt-30">
+        <h3 class="tab-title">30-Minute Personal Training Packages <span>(Competitive Mobile Rates)</span></h3>
+        <div class="pricing-grid">
+          <div class="price-card" data-package="pt30-1">
+            <div class="price-freq">1x / Week</div>
+            <div class="price-label">Maintenance</div>
+            <div class="price-sessions">~4.33 sessions/mo</div>
+            <div class="price-amount">$300<span>/mo</span></div>
+            <div class="price-per">$70 / session</div>
+            <div class="price-save">Base Rate</div>
+            <button class="btn btn-primary buy-btn" data-id="pt30-1" data-name="30-Min PT - 1x/Week" data-price="300">Select Package</button>
+          </div>
+          <div class="price-card popular" data-package="pt30-2">
+            <div class="popular-badge">Popular</div>
+            <div class="price-freq">2x / Week</div>
+            <div class="price-label">Consistency</div>
+            <div class="price-sessions">~8.66 sessions/mo</div>
+            <div class="price-amount">$560<span>/mo</span></div>
+            <div class="price-per">$65 / session</div>
+            <div class="price-save">Save 7%</div>
+            <button class="btn btn-primary buy-btn" data-id="pt30-2" data-name="30-Min PT - 2x/Week" data-price="560">Select Package</button>
+          </div>
+          <div class="price-card" data-package="pt30-3">
+            <div class="price-freq">3x / Week</div>
+            <div class="price-label">Progress</div>
+            <div class="price-sessions">~13 sessions/mo</div>
+            <div class="price-amount">$780<span>/mo</span></div>
+            <div class="price-per">$60 / session</div>
+            <div class="price-save">Save 14%</div>
+            <button class="btn btn-primary buy-btn" data-id="pt30-3" data-name="30-Min PT - 3x/Week" data-price="780">Select Package</button>
+          </div>
+          <div class="price-card" data-package="pt30-4">
+            <div class="price-freq">4x / Week</div>
+            <div class="price-label">Accelerated</div>
+            <div class="price-sessions">~17.33 sessions/mo</div>
+            <div class="price-amount">$950<span>/mo</span></div>
+            <div class="price-per">$55 / session</div>
+            <div class="price-save">Save 21%</div>
+            <button class="btn btn-primary buy-btn" data-id="pt30-4" data-name="30-Min PT - 4x/Week" data-price="950">Select Package</button>
+          </div>
+        </div>
+        <p class="single-session">Single 30-min PT session: <strong>$75</strong> (plus applicable travel fee)</p>
+      </div>
+
+      <!-- 60-Min PT -->
+      <div class="tab-content" id="pt-60">
+        <h3 class="tab-title">60-Minute Personal Training Packages <span>(Competitive Mobile Rates)</span></h3>
+        <div class="pricing-grid">
+          <div class="price-card" data-package="pt60-1">
+            <div class="price-freq">1x / Week</div>
+            <div class="price-label">Maintenance</div>
+            <div class="price-sessions">~4.33 sessions/mo</div>
+            <div class="price-amount">$475<span>/mo</span></div>
+            <div class="price-per">$110 / session</div>
+            <div class="price-save">Base Rate</div>
+            <button class="btn btn-primary buy-btn" data-id="pt60-1" data-name="60-Min PT - 1x/Week" data-price="475">Select Package</button>
+          </div>
+          <div class="price-card popular" data-package="pt60-2">
+            <div class="popular-badge">Popular</div>
+            <div class="price-freq">2x / Week</div>
+            <div class="price-label">Consistency</div>
+            <div class="price-sessions">~8.66 sessions/mo</div>
+            <div class="price-amount">$865<span>/mo</span></div>
+            <div class="price-per">$100 / session</div>
+            <div class="price-save">Save 9%</div>
+            <button class="btn btn-primary buy-btn" data-id="pt60-2" data-name="60-Min PT - 2x/Week" data-price="865">Select Package</button>
+          </div>
+          <div class="price-card" data-package="pt60-3">
+            <div class="price-freq">3x / Week</div>
+            <div class="price-label">Progress</div>
+            <div class="price-sessions">~13 sessions/mo</div>
+            <div class="price-amount">$1,235<span>/mo</span></div>
+            <div class="price-per">$95 / session</div>
+            <div class="price-save">Save 14%</div>
+            <button class="btn btn-primary buy-btn" data-id="pt60-3" data-name="60-Min PT - 3x/Week" data-price="1235">Select Package</button>
+          </div>
+          <div class="price-card" data-package="pt60-4">
+            <div class="price-freq">4x / Week</div>
+            <div class="price-label">Accelerated</div>
+            <div class="price-sessions">~17.33 sessions/mo</div>
+            <div class="price-amount">$1,560<span>/mo</span></div>
+            <div class="price-per">$90 / session</div>
+            <div class="price-save">Save 18%</div>
+            <button class="btn btn-primary buy-btn" data-id="pt60-4" data-name="60-Min PT - 4x/Week" data-price="1560">Select Package</button>
+          </div>
+        </div>
+        <p class="single-session">Single 60-min PT session: <strong>$120</strong> (plus applicable travel fee)</p>
+      </div>
+
+      <div class="pricing-note">
+        <h4>Why Assisted Stretching Works Better Than Self-Stretching</h4>
+        <ul>
+          <li><strong>Deep Muscle Lengthening:</strong> Master trainers isolate specific muscle groups on our specialized bench, achieving angles and resistance impossible alone.</li>
+          <li><strong>Posture Alignment & Decompression:</strong> Gently aligns the spine, relieving compressed nerve roots and chronic tightness in lower back and neck.</li>
+          <li><strong>Injury Prevention & Joint Health:</strong> Increases synovial fluid, maintains joint space, protects cartilage.</li>
+          <li><strong>Convenience & Priority Scheduling:</strong> Monthly packages lock in your preferred weekly doorstep time slot.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Corporate Wellness -->
+  <section class="corporate" id="corporate">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">For Teams of 5+</span>
+        <h2>Corporate Wellness Packages</h2>
+        <p>Bring assisted stretching or personal training to your workplace. Ideal for offices, clinics, gyms, and teams of 5 or more people.</p>
+      </div>
+
+      <div class="corp-grid">
+        <div class="corp-card">
+          <div class="corp-icon"><i class="fas fa-users"></i></div>
+          <h3>Corporate Stretch</h3>
+          <p class="corp-sub">Group assisted mobility sessions on-site</p>
+          <ul class="corp-list">
+            <li><strong>5–9 people:</strong> $425 / group session (45 min)</li>
+            <li><strong>10–19 people:</strong> $625 / group session</li>
+            <li><strong>20+ people:</strong> Custom quote</li>
+            <li><strong>Monthly plan (4 sessions):</strong> Save 10%</li>
+          </ul>
+          <p class="corp-note">Reduces desk tension, improves posture, boosts focus. We bring the stretch bench.</p>
+        </div>
+        <div class="corp-card featured">
+          <div class="corp-badge">Most Requested</div>
+          <div class="corp-icon"><i class="fas fa-dumbbell"></i></div>
+          <h3>Corporate Personal Training</h3>
+          <p class="corp-sub">Semi-private strength & mobility for teams</p>
+          <ul class="corp-list">
+            <li><strong>5–9 people:</strong> $75 / person / session</li>
+            <li><strong>10–14 people:</strong> $65 / person / session</li>
+            <li><strong>15+ people:</strong> Custom quote</li>
+            <li><strong>Monthly plan (4 sessions):</strong> Save 12%</li>
+          </ul>
+          <p class="corp-note">Team fitness that fits lunch breaks or after-hours. Equipment-light, results-focused.</p>
+        </div>
+        <div class="corp-card">
+          <div class="corp-icon"><i class="fas fa-building"></i></div>
+          <h3>Register Your Organization</h3>
+          <p class="corp-sub">5+ employees? Request a visit</p>
+          <p style="font-size:0.9rem;color:var(--gray);margin-bottom:16px;">Submit your company details below. We’ll confirm availability, travel estimate, and a tailored package within 1 business day.</p>
+          <a href="#corp-form" class="btn btn-primary btn-block">Request Corporate Visit</a>
+        </div>
+      </div>
+
+      <form id="corporateForm" class="corp-form" style="margin-top:40px;">
+        <h3 id="corp-form">Corporate Service Request</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="corpOrg">Organization Name *</label>
+            <input type="text" id="corpOrg" required placeholder="Acme Health LLC">
+          </div>
+          <div class="form-group">
+            <label for="corpContact">Contact Person *</label>
+            <input type="text" id="corpContact" required placeholder="Full name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="corpEmail">Work Email *</label>
+            <input type="email" id="corpEmail" required placeholder="you@company.com">
+          </div>
+          <div class="form-group">
+            <label for="corpPhone">Phone *</label>
+            <input type="tel" id="corpPhone" required placeholder="(240) 571-7253">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="corpHeadcount">Number of Participants *</label>
+            <select id="corpHeadcount" required>
+              <option value="">Select...</option>
+              <option value="5-9">5–9 people</option>
+              <option value="10-19">10–19 people</option>
+              <option value="20+">20 or more</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="corpService">Service Type *</label>
+            <select id="corpService" required>
+              <option value="">Select...</option>
+              <option value="Corporate Stretch">Corporate Stretch (group)</option>
+              <option value="Corporate PT">Corporate Personal Training</option>
+              <option value="Both / Hybrid">Both / Hybrid</option>
+              <option value="Not sure">Not sure — need recommendation</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="corpAddress">Workplace Address *</label>
+          <input type="text" id="corpAddress" required placeholder="Street, City, ZIP">
+        </div>
+        <div id="corpTravelEstimate" class="travel-summary" style="margin-bottom:16px;"></div>
+        <div class="form-group">
+          <label for="corpNotes">Goals / Preferred Days (optional)</label>
+          <textarea id="corpNotes" rows="3" placeholder="e.g. Lunch-hour stretches on Tuesdays, focus on back pain..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit Corporate Request</button>
+        <p style="font-size:0.85rem;color:var(--gray);text-align:center;margin-top:12px;">Requests are sent to casseus137@gmail.com. Minimum 5 participants.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Free 15-Min Stretch + QR -->
+  <section class="free-stretch-qr" id="free-stretch">
+    <div class="container">
+      <div class="qr-wrapper">
+        <div class="qr-copy">
+          <span class="section-tag">No Obligation</span>
+          <h2>Free 15-Minute Assisted Stretch</h2>
+          <p>Scan the QR code or tap the button to claim your free intro session. We come to you in Tampa, Bradenton, or Sarasota.</p>
+          <ul class="qr-benefits">
+            <li><i class="fas fa-check"></i> Specialized stretch bench</li>
+            <li><i class="fas fa-check"></i> 1-on-1 mobility assessment</li>
+            <li><i class="fas fa-check"></i> No commitment required</li>
+          </ul>
+          <a href="#booking" class="btn btn-primary" id="claimFreeStretchBtn">Claim Free Session</a>
+        </div>
+        <div class="qr-card">
+          <img id="freeStretchQr" alt="QR code for free 15-minute stretch" width="200" height="200" loading="lazy" decoding="async">
+          <p class="qr-label">Scan to book free 15-min stretch</p>
+          <p class="qr-url" id="freeStretchQrUrl"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking -->
+  <section class="booking" id="booking">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Reserve Your Spot</span>
+        <h2>Book Your Session</h2>
+        <p>Select a package or free session, choose your preferred date & time — you can book up to 90 days in advance, Sunday–Friday. Booked slots become unavailable instantly.</p>
+      </div>
+
+      <div class="booking-wrapper">
+        <div class="booking-form-card">
+          <form id="bookingForm">
+            <div class="form-group">
+              <label for="serviceType">Service Type *</label>
+              <select id="serviceType" required>
+                <option value="">Select service...</option>
+                <option value="free15">FREE 15-Min Assisted Mobility Stretch</option>
+                <option value="stretch30">30-Min Assisted Stretch</option>
+                <option value="stretch60">60-Min Full-Body Stretch</option>
+                <option value="pt30">30-Min Personal Training</option>
+                <option value="pt60">60-Min Personal Training</option>
+              </select>
+            </div>
+
+            <div class="form-group" id="packageGroup" style="display:none;">
+              <label for="packageSelect">Select Package (optional for singles)</label>
+              <select id="packageSelect">
+                <option value="">Single Session (pay per visit)</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="clientName">Full Name *</label>
+                <input type="text" id="clientName" required placeholder="Jane Doe">
+              </div>
+              <div class="form-group">
+                <label for="clientPhone">Phone *</label>
+                <input type="tel" id="clientPhone" required placeholder="(240) 571-7253">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="clientEmail">Email *</label>
+              <input type="email" id="clientEmail" required placeholder="you@email.com">
+            </div>
+
+            <div class="form-group">
+              <label for="location">Service Location *</label>
+              <select id="location" required>
+                <option value="">Select area...</option>
+                <option value="tampa">Tampa ($0 travel)</option>
+                <option value="bradenton">Bradenton ($0 travel)</option>
+                <option value="sarasota">Sarasota ($25 travel — waived on 4+ pkg)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="address">Full Address / Meeting Spot *</label>
+              <input type="text" id="address" required placeholder="Street, City, ZIP — travel fee calculates automatically">
+            </div>
+            <div class="form-group">
+              <label for="clientZip">ZIP Code (for mileage estimate)</label>
+              <input type="text" id="clientZip" placeholder="e.g. 34205" maxlength="10">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="sessionDate">Preferred Date *</label>
+                <input type="date" id="sessionDate" required>
+              </div>
+              <div class="form-group">
+                <label for="sessionTime">Preferred Time *</label>
+                <select id="sessionTime" required>
+                  <option value="">Select time...</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Notes / Goals (optional)</label>
+              <textarea id="notes" rows="3" placeholder="Lower back pain, posture goals, etc."></textarea>
+            </div>
+
+            <div class="travel-summary" id="travelSummary"></div>
+            <div id="renewalOfferBanner" class="renewal-banner" style="display:none;"></div>
+            <div id="bookingAssistantTip" class="assistant-tip" style="display:none;"></div>
+
+            <div class="payment-section" id="paymentSection">
+              <h4>Payment</h4>
+              <p class="payment-note">If this session is not covered by an active package, you will pay securely through Stripe (cards, Apple Pay, Google Pay, Cash App Pay, bank, and more). Cash, Zelle, or Venmo by arrangement — text 240-571-7253.</p>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="submitBooking">Confirm & Book Session</button>
+          </form>
+        </div>
+
+        <div class="booking-sidebar">
+          <div class="sidebar-card">
+            <h3><i class="fas fa-calendar-check"></i> Your Bookings</h3>
+            <div id="bookingsList">
+              <p class="empty-state">No bookings yet. Select a time to get started.</p>
+            </div>
+          </div>
+          <div class="sidebar-card">
+            <h3><i class="fas fa-info-circle"></i> Availability Notes</h3>
+            <ul class="avail-notes">
+              <li>Book up to 90 days in advance, Sunday–Friday</li>
+              <li>Sessions available Sunday–Friday</li>
+              <li>Hours: 7:00 AM – 7:00 PM</li>
+              <li>Closed on Saturdays</li>
+              <li>30-min and 60-min slots</li>
+              <li>Once booked, the slot is locked</li>
+              <li>Free 15-min sessions limited daily</li>
+            </ul>
+          </div>
+          <div class="sidebar-card contact-card">
+            <h3>Prefer to Call?</h3>
+            <p><a href="tel:2405717253"><i class="fas fa-phone"></i> 240-571-7253</a></p>
+            <p><a href="mailto:casseus137@gmail.com"><i class="fas fa-envelope"></i> casseus137@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Gallery -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <span class="section-tag">Meet Your Trainer</span>
+          <h2>Will Casseus</h2>
+          <p class="about-title">Mobile Personal Trainer • Owner</p>
+          <p>Certified Master Personal Trainer dedicated to helping clients in Tampa, Bradenton, and Sarasota move better, feel stronger, and live with less pain. Specializing in assisted stretching (PNF), posture correction, and personalized fitness programs delivered right to your doorstep.</p>
+          <p>Whether you're dealing with lower back pain, looking to improve mobility, or ready to build lean muscle — you'll get the focused 1-on-1 attention you deserve so you never plateau.</p>
+          <div class="about-creds">
+            <span><i class="fas fa-certificate"></i> NASM Certified Master Personal Trainer</span>
+            <span><i class="fas fa-certificate"></i> ASFA Certified Personal Trainer</span>
+          </div>
+          <div class="social-links">
+            <a href="https://www.instagram.com/casseus_healthwellness" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/14dT8uuVjNz/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://youtube.com/@willcasseus576" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="about-images">
+          <picture>
+            <source srcset="assets/486.webp" type="image/webp">
+            <img src="assets/486.jpg" alt="Will Casseus delivering 1-on-1 assisted stretching" class="about-img main" width="720" height="900" loading="lazy" decoding="async">
+          </picture>
+          <img src="assets/538.jpg" alt="Casseus Health & Wellness mobile training van" class="about-img secondary" width="640" height="480" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Referral Program -->
+  <section class="referral" id="referral">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Share the Wellness</span>
+        <h2>Refer a Friend</h2>
+        <p>Love your results? Share Casseus Health & Wellness with someone you care about — you both get rewarded.</p>
+      </div>
+
+      <div class="referral-rewards">
+        <div class="reward-card">
+          <div class="reward-icon"><i class="fas fa-gift"></i></div>
+          <h3>You Get</h3>
+          <p class="reward-amount">$25 Credit</p>
+          <p>Applied toward your next session or package renewal when your friend completes their first paid session.</p>
+        </div>
+        <div class="reward-card highlight">
+          <div class="reward-icon"><i class="fas fa-user-plus"></i></div>
+          <h3>Your Friend Gets</h3>
+          <p class="reward-amount">10% Off</p>
+          <p>Their first monthly package — any stretch or personal training plan.</p>
+        </div>
+        <div class="reward-card">
+          <div class="reward-icon"><i class="fas fa-infinity"></i></div>
+          <h3>No Limit</h3>
+          <p class="reward-amount">Unlimited</p>
+          <p>Refer as many friends as you like. Credits stack toward future sessions and packages.</p>
+        </div>
+      </div>
+
+      <div class="referral-form-wrapper">
+        <form id="referralForm" class="referral-form">
+          <h3>Send a Referral</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="refYourName">Your Name *</label>
+              <input type="text" id="refYourName" required placeholder="Your full name">
+            </div>
+            <div class="form-group">
+              <label for="refYourEmail">Your Email *</label>
+              <input type="email" id="refYourEmail" required placeholder="you@email.com">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="refYourPhone">Your Phone</label>
+              <input type="tel" id="refYourPhone" placeholder="(240) 571-7253">
+            </div>
+            <div class="form-group">
+              <label for="refCode">Your Referral Code (optional)</label>
+              <input type="text" id="refCode" placeholder="Auto-generated if left blank" readonly>
+            </div>
+          </div>
+          <hr class="referral-divider">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="refFriendName">Friend's Name *</label>
+              <input type="text" id="refFriendName" required placeholder="Friend's full name">
+            </div>
+            <div class="form-group">
+              <label for="refFriendEmail">Friend's Email *</label>
+              <input type="email" id="refFriendEmail" required placeholder="friend@email.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="refFriendPhone">Friend's Phone (optional)</label>
+            <input type="tel" id="refFriendPhone" placeholder="Their phone number">
+          </div>
+          <div class="form-group">
+            <label for="refMessage">Personal message (optional)</label>
+            <textarea id="refMessage" rows="2" placeholder="Add a short note to your friend..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Submit Referral</button>
+          <p class="referral-terms">By submitting, you confirm your friend has agreed to be contacted. Credit is issued after their first paid session. Cannot be combined with certain promotions.</p>
+        </form>
+
+        <div class="referral-how">
+          <h3>How It Works</h3>
+          <ol class="referral-steps">
+            <li><strong>Refer</strong> — Submit your friend’s info or share your referral code.</li>
+            <li><strong>They book</strong> — Your friend books a package and mentions your name or code.</li>
+            <li><strong>They train</strong> — They complete their first paid session.</li>
+            <li><strong>You both win</strong> — They get 10% off their first package; you get $25 credit.</li>
+          </ol>
+          <div class="referral-code-box">
+            <p>Your personal code (generate by entering your email above, or we’ll create one on submit):</p>
+            <div class="code-display" id="referralCodeDisplay">————</div>
+            <button type="button" class="btn btn-outline" id="copyRefCode" style="border-color:var(--navy);color:var(--navy);margin-top:10px;padding:8px 16px;font-size:0.85rem;">Copy Code</button>
+          </div>
+          <p style="margin-top:16px;font-size:0.9rem;color:var(--gray);">Questions? Call/text <a href="tel:2405717253" style="color:var(--teal-dark);font-weight:600;">240-571-7253</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ask a Question -->
+  <section class="questions" id="questions">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">We're Here to Help</span>
+        <h2>Ask a Question</h2>
+        <p>Have a question about services, packages, scheduling, or anything else? Send it below — we’ll get back to you quickly.</p>
+      </div>
+
+      <div class="questions-wrapper">
+        <form id="questionForm" class="question-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="qName">Your Name *</label>
+              <input type="text" id="qName" required placeholder="Jane Doe">
+            </div>
+            <div class="form-group">
+              <label for="qEmail">Email *</label>
+              <input type="email" id="qEmail" required placeholder="you@email.com">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="qPhone">Phone (optional)</label>
+              <input type="tel" id="qPhone" placeholder="(240) 571-7253">
+            </div>
+            <div class="form-group">
+              <label for="qTopic">Topic *</label>
+              <select id="qTopic" required>
+                <option value="">Select a topic...</option>
+                <option value="Services">Services & what’s included</option>
+                <option value="Pricing">Pricing & packages</option>
+                <option value="Scheduling">Scheduling & availability</option>
+                <option value="Travel">Travel areas & fees</option>
+                <option value="Free Session">Free 15-min stretch session</option>
+                <option value="Assisted Stretching">Assisted stretching / PNF</option>
+                <option value="Personal Training">Personal training</option>
+                <option value="Health Concerns">Health concerns / injuries</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="qMessage">Your Question *</label>
+            <textarea id="qMessage" rows="5" required placeholder="Type your question here..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Send Question</button>
+          <p class="question-note">We typically respond within 24 hours. You can also call/text <a href="tel:2405717253">240-571-7253</a> or email <a href="mailto:casseus137@gmail.com">casseus137@gmail.com</a>.</p>
+        </form>
+
+        <div class="questions-sidebar">
+          <div class="sidebar-card">
+            <h3><i class="fas fa-comments"></i> Common Questions</h3>
+            <div class="faq-item">
+              <strong>Where do you travel?</strong>
+              <p>Tampa, Bradenton & Sarasota, FL. Travel is free in Tampa & Bradenton; $25 in Sarasota (waived on 4+ session packages).</p>
+            </div>
+            <div class="faq-item">
+              <strong>What should I wear?</strong>
+              <p>Comfortable athletic clothing that allows full range of motion. Sessions can be at your home, office, or preferred spot.</p>
+            </div>
+            <div class="faq-item">
+              <strong>Is the free 15-min session really free?</strong>
+              <p>Yes. It’s a no-obligation intro to assisted mobility stretching with our specialized stretch bench.</p>
+            </div>
+            <div class="faq-item">
+              <strong>How do I cancel or reschedule?</strong>
+              <p>Text or call 240-571-7253 as soon as you can. We’ll work with you to find a better time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Session films -->
+  <section class="session-films" id="watch">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">See a Session</span>
+        <h2>Will in action</h2>
+        <p>Short clips from real assisted-stretch sessions. We come to you in Tampa, Bradenton &amp; Sarasota.</p>
+      </div>
+      <div class="film-grid">
+        <figure class="film-card">
+          <video controls playsinline preload="metadata" poster="assets/486.jpg">
+            <source src="ads/ad-relax-push-12s.mp4" type="video/mp4">
+          </video>
+          <figcaption>Relax. Push. Release. — 12s</figcaption>
+        </figure>
+        <figure class="film-card">
+          <video controls playsinline preload="metadata" poster="assets/486.jpg">
+            <source src="ads/ad-feel-the-difference-15s.mp4" type="video/mp4">
+          </video>
+          <figcaption>Feel the difference — 15s</figcaption>
+        </figure>
+        <figure class="film-card film-wide">
+          <video controls playsinline preload="metadata" poster="assets/486.jpg">
+            <source src="ads/ad-facebook-youtube-15s.mp4" type="video/mp4">
+          </video>
+          <figcaption>Full session energy — landscape</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Move Better?</h2>
+      <p>Lock in your weekly doorstep slot today. Your body will thank you.</p>
+      <a href="#booking" class="btn btn-primary btn-lg">Book Your Session Now</a>
+    </div>
+  </section>
+
+  <!-- Contact / Footer -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-icon">
+          <img src="casseus-logo.jpg" alt="Casseus Health & Wellness logo">
+        </div>
+            <div class="logo-text">
+              <span class="logo-main">CASSEUS</span>
+              <span class="logo-sub">HEALTH & WELLNESS</span>
+            </div>
+          </div>
+          <p>Mobile Personal Training & Assisted Stretching serving Tampa, Bradenton & Sarasota, FL.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="#services">Services</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#corporate">Corporate (5+)</a>
+          <a href="#booking">Book Now</a>
+          <a href="#free-stretch">Free 15-Min Stretch</a>
+          <a href="store.html">Shop</a>
+          <a href="wellness-hub.html">Wellness</a>
+          <a href="member-portal.html">Members</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="#referral">Refer a Friend</a>
+          <a href="affiliate.html">Affiliates</a>
+          <a href="#questions">Help</a>
+          <a href="#watch">Watch</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p><i class="fas fa-phone"></i> <a href="tel:2405717253">240-571-7253</a></p>
+          <p><i class="fas fa-envelope"></i> <a href="mailto:casseus137@gmail.com">casseus137@gmail.com</a></p>
+          <p><i class="fas fa-map-marker-alt"></i> Bradenton • Sarasota • Tampa, FL</p>
+        </div>
+        <div class="footer-social">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="https://www.instagram.com/casseus_healthwellness" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/14dT8uuVjNz/" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+            <a href="https://youtube.com/@willcasseus576" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Casseus Health & Wellness. All rights reserved. | Mileage &amp; travel fees apply. | <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Waiver Modal -->
+  <div class="modal" id="waiverModal">
+    <div class="modal-content modal-wide">
+      <button class="modal-close" id="waiverClose">&times;</button>
+      <h3>Liability Waiver &amp; Safety Disclosure</h3>
+      <p class="waiver-intro">Required before any package purchase or in-person service. Please read carefully. <strong>Version LW-2026-01</strong></p>
+
+      <div class="waiver-scroll">
+        <p style="font-size:0.85rem;color:#64748b;margin-bottom:16px;"><em>Template for operational use. Final wording should be approved by a Florida-licensed attorney.</em></p>
+
+        <h4>1. Parties</h4>
+        <p>This Liability Waiver &amp; Safety Disclosure (“Agreement”) is entered into by the undersigned client (“Client,” “I,” “me”) and Casseus Health &amp; Wellness, including Will Casseus and any employees, contractors, assistants, or agents (collectively, “Provider”). It applies to personal training, assisted stretching (including PNF and similar techniques), mobility work, assessments, and related activities at any location, including Client’s home, workplace, outdoor sites, or other agreed venues in Florida.</p>
+
+        <h4>2. Assumption of Risk</h4>
+        <p>I understand that physical training and assisted stretching involve inherent risks, including but not limited to muscle strains, sprains, tears, joint or disc injury, soreness, bruising, falls, cardiovascular events, and in rare cases serious injury or death. I understand that assisted stretching involves the Provider applying force and physical contact to my body. I voluntarily choose to participate and <strong>expressly assume all risks</strong> of participation, whether known or unknown, except to the extent caused by Provider’s gross negligence or intentional misconduct.</p>
+
+        <h4>3. Not Medical Care</h4>
+        <p>Provider offers fitness, mobility, and wellness services only. Services are <strong>not</strong> medical care, physical therapy, chiropractic treatment, licensed massage therapy, or diagnosis or treatment of disease or injury. I am responsible for obtaining medical clearance when appropriate. I will not rely on Provider for medical advice.</p>
+
+        <h4>4. Health &amp; Medical Disclosure</h4>
+        <p>I represent that I have disclosed, and will continue to disclose before and during sessions, any medical conditions, injuries, surgeries, disabilities, medications, pregnancy, or limitations that may affect safe participation. I agree to stop activity and notify Provider immediately if I feel pain (beyond normal working discomfort), dizziness, chest pain, or other warning signs. I accept that failure to disclose relevant information increases my risk of injury.</p>
+
+        <h4>5. Release of Liability (Ordinary Negligence)</h4>
+        <p>To the maximum extent permitted by Florida law, in consideration for being allowed to participate, I hereby <strong>release, waive, and discharge</strong> Provider from any and all claims, liabilities, demands, and causes of action arising out of or related to my participation—including personal injury, property damage, or death—caused by the <strong>ordinary negligence</strong> of Provider or by the inherent risks of the activities.</p>
+        <p><strong>This release does not waive claims for gross negligence, willful or wanton misconduct, or intentional acts</strong>, or any other liability that cannot be waived under Florida law.</p>
+
+        <h4>6. Indemnification</h4>
+        <p>To the maximum extent permitted by law, I agree to indemnify and hold Provider harmless from claims by third parties arising out of: (a) the condition of premises I control (home, office, or outdoor area I choose); (b) the acts of my guests, family members, pets, or other persons present; or (c) my failure to follow instructions or to disclose material health information—except to the extent caused by Provider’s gross negligence or intentional misconduct.</p>
+
+        <h4>7. Premises &amp; Session Safety</h4>
+        <p>When sessions occur at a location I provide, I am responsible for a reasonably safe space (clear floor, adequate lighting, control of pets and bystanders, and safe surfaces). Provider may delay, modify, or end a session if conditions are unsafe. I consent to appropriate professional physical contact reasonably necessary for assisted stretching and spotting.</p>
+
+        <h4>8. Client Responsibilities</h4>
+        <ul>
+          <li>Follow Provider’s instructions and use a pain-free or “safe discomfort” range as directed.</li>
+          <li>Wear suitable athletic clothing and footwear as appropriate.</li>
+          <li>Do not participate while under the influence of alcohol or impairing substances.</li>
+          <li>Understand that results vary; no specific outcome, cure, or performance result is guaranteed.</li>
+        </ul>
+
+        <h4>9. Media</h4>
+        <p>Identifiable photos, videos, or testimonials will <strong>not</strong> be published without my separate written or electronic consent. De-identified notes may be used for program design only.</p>
+
+        <h4>10. Minors</h4>
+        <p>Services are intended for clients <strong>18 years of age or older</strong>. If a parent or legal guardian signs for a minor, they represent they have authority to do so; Florida law may limit a parent’s ability to waive a minor’s own injury claims, and Provider may decline to train minors or require additional documentation.</p>
+
+        <h4>11. Governing Law, Venue &amp; Severability</h4>
+        <p>This Agreement is governed by the laws of the State of Florida. Exclusive venue for disputes shall be the state courts in a county where Provider regularly provides services (including Manatee, Sarasota, or Hillsborough County), unless otherwise required by law. If any provision is found unenforceable, the remaining provisions remain in full force.</p>
+
+        <h4>12. Electronic Signature &amp; Entire Agreement</h4>
+        <p>I agree that typing my name and checking the box below constitutes my electronic signature under applicable law, with the same effect as a handwritten signature. This Agreement (Version LW-2026-01) may be supplemented by intake forms, booking terms, and the Return &amp; Refund Policy. The version I sign applies to services under that signature.</p>
+
+        <h4>13. Acknowledgment</h4>
+        <p>I have read this Agreement in full, understand it, and sign it voluntarily. I am of sound mind. I am at least 18 years old, or I am the parent/legal guardian of the participating minor and sign on their behalf to the extent permitted by law.</p>
+      </div>
+
+      <div class="waiver-form">
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="waiverAgree" required>
+            I have read, understand, and agree to the Liability Waiver &amp; Safety Disclosure (Version LW-2026-01) above.
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="waiverEsignConsent" required>
+            I consent to sign this document electronically. My electronic signature has the same effect as a handwritten signature.
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="waiverName">Full Legal Name *</label>
+          <input type="text" id="waiverName" placeholder="Type your full legal name" required>
+        </div>
+        <div class="form-group">
+          <label>Draw Your Digital Signature *</label>
+          <div class="signature-pad-wrap">
+            <canvas id="waiverSignaturePad" class="signature-pad" width="500" height="160"></canvas>
+            <div class="signature-pad-actions">
+              <button type="button" class="btn btn-outline" id="clearWaiverSignature" style="border-color:var(--navy);color:var(--navy);padding:6px 14px;font-size:0.85rem;">Clear Signature</button>
+              <span class="signature-hint">Sign above using mouse or touch</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="waiverDate">Date</label>
+          <input type="text" id="waiverDate" readonly>
+        </div>
+        <button class="btn btn-primary btn-block" id="signWaiverBtn">Sign &amp; Continue to Intake Form</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Intake Form Modal -->
+  <div class="modal" id="intakeModal">
+    <div class="modal-content modal-wide">
+      <button class="modal-close" id="intakeClose">&times;</button>
+      <h3>Client Intake Form</h3>
+      <p class="waiver-intro">Please complete this in-depth intake so we can design a safe, effective program tailored to you.</p>
+
+      <form id="intakeForm" class="intake-form">
+        <div class="intake-section">
+          <h4>Personal Information</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="intakeFullName">Full Name *</label>
+              <input type="text" id="intakeFullName" required>
+            </div>
+            <div class="form-group">
+              <label for="intakeDob">Date of Birth *</label>
+              <input type="date" id="intakeDob" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="intakePhone">Phone *</label>
+              <input type="tel" id="intakePhone" required>
+            </div>
+            <div class="form-group">
+              <label for="intakeEmail">Email *</label>
+              <input type="email" id="intakeEmail" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="intakeEmergency">Emergency Contact (Name & Phone) *</label>
+            <input type="text" id="intakeEmergency" required placeholder="Jane Doe – 555-123-4567">
+          </div>
+        </div>
+
+        <div class="intake-section">
+          <h4>Health History</h4>
+          <div class="form-group">
+            <label>Do you have any of the following? (check all that apply)</label>
+            <div class="checkbox-grid">
+              <label><input type="checkbox" name="conditions" value="High blood pressure"> High blood pressure</label>
+              <label><input type="checkbox" name="conditions" value="Heart disease"> Heart disease</label>
+              <label><input type="checkbox" name="conditions" value="Diabetes"> Diabetes</label>
+              <label><input type="checkbox" name="conditions" value="Asthma"> Asthma / Respiratory issues</label>
+              <label><input type="checkbox" name="conditions" value="Arthritis"> Arthritis</label>
+              <label><input type="checkbox" name="conditions" value="Osteoporosis"> Osteoporosis</label>
+              <label><input type="checkbox" name="conditions" value="Herniated disc"> Herniated / bulging disc</label>
+              <label><input type="checkbox" name="conditions" value="Sciatica"> Sciatica</label>
+              <label><input type="checkbox" name="conditions" value="Previous surgery"> Previous surgery</label>
+              <label><input type="checkbox" name="conditions" value="Pregnant"> Currently pregnant / postpartum</label>
+              <label><input type="checkbox" name="conditions" value="None"> None of the above</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="intakeInjuries">Current or past injuries / surgeries (describe) *</label>
+            <textarea id="intakeInjuries" rows="2" required placeholder="e.g. Right knee ACL 2019, lower back strain 2023..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="intakeMedications">Current medications or supplements</label>
+            <textarea id="intakeMedications" rows="2" placeholder="List any medications or leave blank if none"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="intakePain">Areas of pain or discomfort (rate 0–10 if applicable)</label>
+            <textarea id="intakePain" rows="2" placeholder="e.g. Lower back 6/10, tight hips, neck stiffness..."></textarea>
+          </div>
+        </div>
+
+        <div class="intake-section">
+          <h4>Lifestyle & Goals</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="intakeActivity">Current activity level *</label>
+              <select id="intakeActivity" required>
+                <option value="">Select...</option>
+                <option value="Sedentary">Sedentary (little to no exercise)</option>
+                <option value="Lightly active">Lightly active (1–2 days/week)</option>
+                <option value="Moderately active">Moderately active (3–4 days/week)</option>
+                <option value="Very active">Very active (5+ days/week)</option>
+                <option value="Athlete">Competitive athlete</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="intakeOccupation">Occupation / daily posture</label>
+              <input type="text" id="intakeOccupation" placeholder="e.g. Desk job, nurse, construction...">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Primary goals (check all that apply) *</label>
+            <div class="checkbox-grid">
+              <label><input type="checkbox" name="goals" value="Reduce pain"> Reduce pain</label>
+              <label><input type="checkbox" name="goals" value="Improve flexibility"> Improve flexibility / mobility</label>
+              <label><input type="checkbox" name="goals" value="Better posture"> Better posture</label>
+              <label><input type="checkbox" name="goals" value="Strength"> Build strength</label>
+              <label><input type="checkbox" name="goals" value="Fat loss"> Fat loss</label>
+              <label><input type="checkbox" name="goals" value="Muscle gain"> Lean muscle gain</label>
+              <label><input type="checkbox" name="goals" value="Stress relief"> Stress relief / recovery</label>
+              <label><input type="checkbox" name="goals" value="Athletic performance"> Athletic performance</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="intakeGoalsDetail">Tell us more about your goals</label>
+            <textarea id="intakeGoalsDetail" rows="2" placeholder="What would success look like for you in 30 / 60 / 90 days?"></textarea>
+          </div>
+        </div>
+
+        <div class="intake-section">
+          <h4>Where Will the Session Be Held?</h4>
+          <div class="form-group">
+            <label for="intakeSessionType">Session location type *</label>
+            <select id="intakeSessionType" required>
+              <option value="">Select...</option>
+              <option value="Home">My home / residence</option>
+              <option value="Apartment gym">Apartment / condo gym</option>
+              <option value="Office">Office / workplace</option>
+              <option value="Outdoor">Outdoor (park, driveway, etc.)</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="intakeSessionArea">City / area *</label>
+            <select id="intakeSessionArea" required>
+              <option value="">Select...</option>
+              <option value="Tampa">Tampa ($0 travel)</option>
+              <option value="Bradenton">Bradenton ($0 travel)</option>
+              <option value="Sarasota">Sarasota ($25 travel — waived on 4+ session packages)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="intakeSessionAddress">Full address or meeting spot *</label>
+            <input type="text" id="intakeSessionAddress" required placeholder="Street address, building name, or park name">
+          </div>
+          <div class="form-group">
+            <label for="intakeSessionNotes">Location notes (parking, gate code, floor, etc.)</label>
+            <textarea id="intakeSessionNotes" rows="2" placeholder="e.g. Gate code 1234, park in visitor spot, 3rd floor gym..."></textarea>
+          </div>
+        </div>
+
+        <div class="intake-section">
+          <h4>Additional Information</h4>
+          <div class="form-group">
+            <label for="intakeLimitations">Any movements or positions you cannot / prefer not to do?</label>
+            <textarea id="intakeLimitations" rows="2" placeholder="e.g. No overhead pressing, avoid deep squats..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="intakeOther">Anything else we should know?</label>
+            <textarea id="intakeOther" rows="2" placeholder="Preferences, concerns, past training experience..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="intakeAccurate" required>
+              I confirm that the information provided is accurate and complete to the best of my knowledge.
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="submitIntakeBtn">Submit Intake & Continue to Payment</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Return & Refund Policy Modal (required for every purchase) -->
+  <div class="modal" id="refundPolicyModal">
+    <div class="modal-content modal-wide">
+      <button class="modal-close" id="refundPolicyClose">&times;</button>
+      <h3>Return &amp; Refund Policy</h3>
+      <p class="waiver-intro"><strong>Required acknowledgment.</strong> Every customer must read and sign this policy before any purchase is finalized.</p>
+
+      <div class="waiver-text" style="max-height:340px;overflow-y:auto;">
+        <h4>1. Scope</h4>
+        <p>This Return &amp; Refund Policy (“Policy”) applies to all purchases from Casseus Health &amp; Wellness, including personal training packages, assisted stretching packages, single sessions, free introductory sessions (where a paid conversion applies), wellness shop products, subscriptions, and any other goods or services sold through our website or in person.</p>
+
+        <h4>2. Services (Training &amp; Stretching) — All Sales Final After First Session</h4>
+        <p>Package and session fees are for professional time, travel, and reserved capacity. <strong>Once you complete your first paid session under a package or single-session booking, that purchase is final and non-refundable</strong>, except as required by law or as expressly stated below.</p>
+        <ul>
+          <li><strong>Before first session:</strong> You may request a full refund of unused package fees within 48 hours of purchase, provided no session has been completed and no slot has been consumed.</li>
+          <li><strong>After first session begins:</strong> No refund of the package or session fee. Unused remaining sessions are non-transferable and non-refundable, but may be rescheduled subject to availability.</li>
+          <li><strong>No-shows:</strong> Failure to attend a booked session without at least 12 hours’ notice forfeits that session with no refund or makeup guarantee.</li>
+          <li><strong>Late cancellations:</strong> Cancellations under 12 hours may be treated as a used session at our discretion.</li>
+        </ul>
+
+        <h4>3. Recurring Subscriptions</h4>
+        <p>If you opt into monthly recurring billing, you may cancel future renewals anytime by texting 240-571-7253 or emailing casseus137@gmail.com. Cancellation stops the <em>next</em> billing cycle; it does not refund the current paid period. Already-delivered sessions or shipped products are non-refundable under Sections 2 and 4.</p>
+
+        <h4>4. Wellness Shop Products</h4>
+        <ul>
+          <li><strong>Unopened products:</strong> May be returned within 14 days of delivery for a refund of the product price (excluding shipping), if unused, unopened, and in original packaging. You are responsible for return shipping unless the item arrived damaged or incorrect.</li>
+          <li><strong>Opened / used products:</strong> Not eligible for return or refund for hygiene and safety reasons (including supplements, personal care, and recovery items that contact skin).</li>
+          <li><strong>Damaged or incorrect items:</strong> Contact us within 7 days of delivery with photos. We will replace or refund at our option.</li>
+          <li><strong>Perishable / consumable:</strong> Supplements and consumables are final sale once the seal is broken.</li>
+        </ul>
+
+        <h4>5. How to Request a Refund or Return</h4>
+        <p>Email <strong>casseus137@gmail.com</strong> or text <strong>240-571-7253</strong> with your name, order/receipt number, purchase date, and reason. Approved service refunds (pre-first-session only) are issued to the original payment method within 10 business days. Product returns require a return authorization (RA) number before shipping.</p>
+
+        <h4>6. Chargebacks &amp; Disputes</h4>
+        <p>By signing this Policy, you agree to contact us first to resolve any billing concern. Initiating a chargeback without first allowing us 10 business days to respond may result in suspension of services and collection of amounts still owed for completed sessions or non-returnable goods.</p>
+
+        <h4>7. Travel Fees</h4>
+        <p>Travel surcharges (e.g., Sarasota) are non-refundable once a session in that area has been scheduled or completed, unless we cancel the visit.</p>
+
+        <h4>8. Limitation</h4>
+        <p>To the maximum extent permitted by Florida law, our total liability for any purchase is limited to the amount you paid for that specific purchase. Nothing in this Policy limits rights that cannot be waived under applicable law.</p>
+
+        <h4>9. Acknowledgment</h4>
+        <p>I have read this entire Return &amp; Refund Policy. I understand that most service fees are non-refundable after the first session, that product returns are limited, and that recurring plans only cancel future cycles. I sign voluntarily and agree to be bound by this Policy for this and future purchases from Casseus Health &amp; Wellness unless a newer policy is provided.</p>
+      </div>
+
+      <div class="waiver-sign">
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="refundAgree" required>
+            I have read, understand, and agree to the Return &amp; Refund Policy above. I understand sales of services are generally final after the first session and product returns are limited as described.
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="refundEsignConsent" required>
+            I consent to sign this policy electronically. My electronic signature has the same effect as a handwritten signature.
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="refundSignName">Full Legal Name *</label>
+          <input type="text" id="refundSignName" required placeholder="Full legal name">
+        </div>
+        <div class="form-group">
+          <label>Draw Your Digital Signature *</label>
+          <div class="signature-pad-wrap">
+            <canvas id="refundSignaturePad" class="signature-pad" width="500" height="160"></canvas>
+            <div class="signature-pad-actions">
+              <button type="button" class="btn btn-outline" id="clearRefundSignature" style="border-color:var(--navy);color:var(--navy);padding:6px 14px;font-size:0.85rem;">Clear Signature</button>
+              <span class="signature-hint">Sign above using mouse or touch</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="refundSignDate">Date *</label>
+          <input type="date" id="refundSignDate" required>
+        </div>
+        <button class="btn btn-primary btn-block" id="signRefundPolicyBtn">Sign Policy &amp; Continue to Payment</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment Modal -->
+  <div class="modal" id="paymentModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <h3>Confirm Purchase</h3>
+      <div id="modalDetails"></div>
+      <div class="waiver-status" id="waiverStatus"></div>
+      <div class="waiver-status" id="intakeStatus"></div>
+      <div class="waiver-status" id="refundPolicyStatus"></div>
+      <div class="recurring-option" style="background:rgba(91,138,120,0.08);border:1px solid rgba(91,138,120,0.25);border-radius:10px;padding:14px 16px;margin-bottom:16px;">
+        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-weight:500;margin:0;">
+          <input type="checkbox" id="packageRecurring" style="width:18px;height:18px;margin-top:2px;accent-color:var(--teal);flex-shrink:0;">
+          <span><strong>Make this recurring (monthly)</strong><br>
+          <span style="font-size:0.85rem;color:var(--gray);font-weight:400;">Automatically renew this package each month. Cancel anytime by texting 240-571-7253 or emailing casseus137@gmail.com.</span></span>
+        </label>
+      </div>
+      <p class="payment-methods-note" style="font-size:0.85rem;color:#64748b;margin:0 0 12px;line-height:1.5;">
+        Cards (Visa, Mastercard, Amex, Discover), Apple Pay, Google Pay, Link, Cash App Pay, bank/ACH, and other methods enabled on your Stripe account. Cash, Zelle, or Venmo by arrangement — text 240-571-7253.
+      </p>
+      <button class="btn btn-primary btn-block" id="confirmPayment">Pay securely with Stripe</button>
+    </div>
+  </div>
+
+  <!-- Receipt & Thank You Letter Modal -->
+  <div class="modal" id="receiptModal">
+    <div class="modal-content modal-wide">
+      <button class="modal-close" id="receiptClose">&times;</button>
+      <div id="receiptContent">
+        <!-- Populated by JavaScript -->
+      </div>
+      <div class="receipt-actions">
+        <button class="btn btn-primary" id="printReceiptBtn"><i class="fas fa-print"></i> Print Receipt & Letter</button>
+        <button class="btn btn-outline" id="closeReceiptBtn" style="border-color:var(--navy);color:var(--navy);">Close & Book Session</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Login Modal (hidden from customers) -->
+  <div class="modal" id="adminLoginModal">
+    <div class="modal-content" style="max-width:400px;">
+      <button class="modal-close" id="adminLoginClose">&times;</button>
+      <h3>Admin Access</h3>
+      <p class="waiver-intro">This area is for authorized staff only. Customers cannot access reports.</p>
+      <div class="form-group">
+        <label for="adminPassword">Admin Password</label>
+        <input type="password" id="adminPassword" placeholder="Enter admin password" autocomplete="off">
+      </div>
+      <button class="btn btn-primary btn-block" id="adminLoginBtn">Unlock Admin Reports</button>
+      <p style="font-size:0.8rem;color:#64748b;margin-top:12px;text-align:center;">Reports are emailed only to casseus137@gmail.com</p>
+    </div>
+  </div>
+
+  <!-- Weekly Report Modal (Admin Only) -->
+  <div class="modal" id="weeklyReportModal">
+    <div class="modal-content modal-wide">
+      <button class="modal-close" id="weeklyReportClose">&times;</button>
+      <h3>Weekly Purchase & Waiver Report <span style="font-size:0.75rem;background:#1a3a4d;color:#fff;padding:3px 10px;border-radius:20px;vertical-align:middle;">ADMIN ONLY</span></h3>
+      <p class="waiver-intro">Summary of package purchases, liability waivers, and safety disclosures. This report is never shown to customers and is only sent to casseus137@gmail.com.</p>
+
+      <div class="report-controls">
+        <label for="reportWeek">Week of:</label>
+        <input type="date" id="reportWeek">
+        <button class="btn btn-primary" id="generateReportBtn" style="padding:10px 18px;font-size:0.9rem;">Generate Report</button>
+      </div>
+
+      <div id="weeklyReportContent">
+        <p class="empty-state">Select a week and click Generate Report.</p>
+      </div>
+
+      <div class="receipt-actions" style="margin-top:20px;">
+        <button class="btn btn-primary" id="emailWeeklyReportBtn"><i class="fas fa-envelope"></i> Email Report to casseus137@gmail.com</button>
+        <button class="btn btn-primary" id="printWeeklyReportBtn" style="background:var(--navy);"><i class="fas fa-print"></i> Print / Save Report</button>
+        <button class="btn btn-outline" id="closeWeeklyReportBtn" style="border-color:var(--navy);color:var(--navy);">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quarterly Survey Modal -->
+  <div class="modal" id="surveyModal">
+    <div class="modal-content">
+      <button class="modal-close" id="surveyClose">&times;</button>
+      <h3>How Are We Doing?</h3>
+      <p class="waiver-intro">Every 3 months we ask clients to rate our service. Your feedback is emailed to casseus137@gmail.com.</p>
+      <form id="surveyForm">
+        <div class="form-group">
+          <label for="surveyName">Your Name *</label>
+          <input type="text" id="surveyName" required>
+        </div>
+        <div class="form-group">
+          <label for="surveyEmail">Email *</label>
+          <input type="email" id="surveyEmail" required>
+        </div>
+        <div class="form-group">
+          <label>Overall rating *</label>
+          <div class="star-rating" id="starRating">
+            <button type="button" data-r="1">★</button>
+            <button type="button" data-r="2">★</button>
+            <button type="button" data-r="3">★</button>
+            <button type="button" data-r="4">★</button>
+            <button type="button" data-r="5">★</button>
+          </div>
+          <input type="hidden" id="surveyRating" value="">
+        </div>
+        <div class="form-group">
+          <label for="surveyComment">Comments (optional)</label>
+          <textarea id="surveyComment" rows="3" placeholder="What went well? What can we improve?"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit Survey</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Package Renewal Offer Modal -->
+  <div class="modal" id="renewalModal">
+    <div class="modal-content">
+      <button class="modal-close" id="renewalClose">&times;</button>
+      <h3>Renew &amp; Save</h3>
+      <div id="renewalContent"></div>
+      <button class="btn btn-primary btn-block" id="renewalAcceptBtn" style="margin-top:16px;">View Discounted Packages</button>
+      <button class="btn btn-outline btn-block" id="renewalDismissBtn" style="margin-top:8px;border-color:var(--navy);color:var(--navy);">Maybe Later</button>
+    </div>
+  </div>
+
+  <!-- Business Insights (Admin) -->
+  <div class="modal" id="insightsModal">
+    <div class="modal-content modal-wide">
+      <button class="modal-close" id="insightsClose">&times;</button>
+      <h3>Business Insights &amp; Recommendations <span style="font-size:0.75rem;background:#1a3a4d;color:#fff;padding:3px 10px;border-radius:20px;">ADMIN</span></h3>
+      <p class="waiver-intro">Automated suggestions to grow Casseus Health &amp; Wellness. Updated from live booking and package data.</p>
+      <div id="insightsContent"></div>
+      <button class="btn btn-outline" id="insightsCloseBtn" style="border-color:var(--navy);color:var(--navy);margin-top:16px;">Close</button>
+    </div>
+  </div>
+
+  <!-- Live Chat Widget -->
+  <div class="chat-widget" id="chatWidget">
+    <button class="chat-toggle" id="chatToggle" aria-label="Open live chat">
+      <i class="fas fa-comments" id="chatIconOpen"></i>
+      <i class="fas fa-times" id="chatIconClose" style="display:none;"></i>
+      <span class="chat-badge" id="chatBadge" style="display:none;">1</span>
+    </button>
+
+    <div class="chat-panel" id="chatPanel">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="chat-avatar"><i class="fas fa-dumbbell"></i></div>
+          <div>
+            <strong>Casseus Health & Wellness</strong>
+            <span class="chat-status"><span class="status-dot"></span> Typically replies within a few hours</span>
+          </div>
+        </div>
+        <button class="chat-minimize" id="chatMinimize" aria-label="Minimize chat">&times;</button>
+      </div>
+
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-typing" id="chatTyping" style="display:none;" aria-live="polite"><span></span><span></span><span></span></div>
+        <div class="chat-bubble bot">
+          <p>Hi! 👋 Welcome to Casseus Health & Wellness. How can we help you today?</p>
+          <span class="chat-time">Just now</span>
+        </div>
+        <div class="chat-quick-replies" id="chatQuickReplies">
+          <button type="button" data-msg="I'd like to book a free 15-min stretch session">Free 15-min stretch</button>
+          <button type="button" data-msg="What are your package prices?">Pricing info</button>
+          <button type="button" data-msg="Do you travel to my area?">Travel areas</button>
+          <button type="button" data-msg="I have a question about assisted stretching">Assisted stretching</button>
+        </div>
+      </div>
+
+      <form class="chat-input-area" id="chatForm">
+        <input type="text" id="chatInput" placeholder="Type your message..." autocomplete="off" maxlength="500">
+        <button type="submit" id="chatSend" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
+      </form>
+      <div class="chat-footer-note">Messages go to our team · Or call <a href="tel:2405717253">240-571-7253</a></div>
+    </div>
+  </div>
+
+  <!-- Success Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
