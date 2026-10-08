@@ -1,0 +1,7 @@
+# Public pages only. Do not list the owner dashboard.
+User-agent: *
+Allow: /
+Disallow: /dashboard.html
+Disallow: /api/
+
+Sitemap: https://casseuswellness.com/sitemap.xml
