@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wellness Hub | Casseus Health & Wellness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root { --navy:#1a3a4d; --teal:#3f6d5e; --mist:#eef3f2; --line:#d7e3df; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Open Sans", sans-serif; color: var(--navy); background: var(--mist); }
+    header, h1, h2, h3, button { font-family: Montserrat, sans-serif; }
+    a { color: var(--teal); }
+    header { position: sticky; top: 0; z-index: 3; background: #102833; color: #fff; padding: 16px 20px; display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+    header strong { letter-spacing: .08em; }
+    .note { margin: 0; padding: 10px 22px; background: #e7f1ed; color: #3f6d5e; font-size: .9rem; }
+    section h1 { margin: 0 0 8px; }
+    .row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .row > * { flex: 1; min-width: 140px; }
+    img.shot { width: 120px; height: 80px; object-fit: cover; border-radius: 8px; }
+    header a { color: #fff; text-decoration: none; margin-left: 14px; }
+    main { display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 64px); }
+    nav { background: #fff; padding: 12px; border-right: 1px solid var(--line); }
+    nav button { display: block; width: 100%; text-align: left; border: 0; background: transparent; padding: 8px; border-radius: 8px; cursor: pointer; color: var(--navy); }
+    nav button.active, nav button:hover { background: #e7f1ed; color: var(--teal); }
+    section { display: none; padding: 22px; }
+    section.active { display: block; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+    .card, .item { background: #fff; border-radius: 14px; padding: 14px; box-shadow: 0 8px 24px rgba(20,40,51,.06); }
+    input, select, textarea { width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: 8px; margin: 6px 0; }
+    button.act { background: var(--navy); color: #fff; border: 0; border-radius: 999px; padding: 8px 14px; cursor: pointer; }
+    .muted { color: #64748b; }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .wheel { width: 140px; height: 140px; border-radius: 50%; border: 10px solid var(--teal); display: grid; place-items: center; margin: 8px 0; }
+    @media (max-width: 800px) { main { grid-template-columns: 1fr; } nav { display: flex; overflow: auto; } nav button { width: auto; white-space: nowrap; } }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>CASSEUS WELLNESS HUB</strong>
+    <div><a href="index.html">Home</a><a href="member-portal.html">Members</a><a href="store.html">Shop</a></div>
+  </header>
+  <p class="note">Doorstep stretching and training in Tampa, Bradenton, and Sarasota. Tools here are estimates, not medical advice. Book at 240-571-7253.</p>
+  <main>
+    <nav id="nav"></nav>
+    <div>
+      <section id="dash" class="active">
+        <h1>Your day</h1>
+        <p class="muted" id="quote"></p>
+        <div class="grid">
+          <article class="card"><h3>Wellness score</h3><p id="score">—</p></article>
+          <article class="card"><h3>Streak</h3><p id="streak">0 days</p></article>
+          <article class="card"><h3>Workout of the day</h3><p>8-minute hip and desk stretch. Home, no equipment.</p></article>
+          <article class="card"><h3>Badges</h3><p id="badges">Start a habit to earn the first badge.</p></article>
+        </div>
+      </section>
+      <section id="workouts">
+        <h1>Workout library</h1>
+        <div class="filters">
+          <select id="level"><option>All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select>
+          <select id="place"><option>Home or gym</option><option>Home</option><option>Gym</option></select>
+          <input id="muscle" placeholder="Search muscle group" />
+        </div>
+        <div class="grid" id="workoutList"></div>
+      </section>
+      <section id="quiz">
+        <h1>Find your plan</h1>
+        <select id="qLevel"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select>
+        <select id="qGoal"><option>Mobility</option><option>Strength</option><option>Stress relief</option></select>
+        <input id="qEmail" type="email" placeholder="Email for the plan" />
+        <button class="act" id="quizGo" type="button">See my plan</button>
+        <p id="quizOut"></p>
+      </section>
+      <section id="progress">
+        <h1>Progress</h1>
+        <input id="weight" placeholder="Weight, lb" />
+        <input id="measure" placeholder="Waist or hip, inches" />
+        <input id="photo" type="file" accept="image/*" />
+        <button class="act" id="saveProgress" type="button">Save check-in</button>
+        <div class="grid" id="progressList"></div>
+      </section>
+      <section id="generator">
+        <h1>Workout generator</h1>
+        <select id="minutes"><option>15</option><option>30</option><option>45</option></select>
+        <select id="equip"><option>Bodyweight</option><option>Bands</option><option>Gym</option></select>
+        <select id="goal"><option>Mobility</option><option>Strength</option><option>Recovery</option></select>
+        <button class="act" id="gen" type="button">Generate</button>
+        <div id="genOut"></div>
+      </section>
+      <section id="challenges">
+        <h1>Challenge hub</h1>
+        <div class="grid" id="challengeList"></div>
+      </section>
+      <section id="calc">
+        <h1>Goal calculators</h1>
+        <p class="muted">Estimates only. Not a diagnosis or a meal prescription.</p>
+        <input id="cm" placeholder="Height in cm" />
+        <input id="kg" placeholder="Weight in kg" />
+        <button class="act" id="calcGo" type="button">Calculate</button>
+        <p id="calcOut"></p>
+      </section>
+      <section id="calm">
+        <h1>Guided calm</h1>
+        <div class="grid">
+          <article class="card"><h3>Box breathing</h3><p>In 4, hold 4, out 4, hold 4.</p><button class="act" data-sound="breath" type="button">Play tone</button></article>
+          <article class="card"><h3>Stress relief</h3><p>Slow exhale, shoulders down.</p><button class="act" data-sound="stress" type="button">Play tone</button></article>
+          <article class="card"><h3>Sleep</h3><p>Dark room, longer exhale.</p><button class="act" data-sound="sleep" type="button">Play tone</button></article>
+        </div>
+      </section>
+      <section id="mood">
+        <h1>Mood check-in</h1>
+        <select id="moodPick"><option>Steady</option><option>Low</option><option>Tight</option><option>Energized</option></select>
+        <button class="act" id="moodSave" type="button">Save mood</button>
+        <p id="moodOut"></p>
+      </section>
+      <section id="wheel">
+        <h1>Wellness wheel</h1>
+        <p class="muted">Rate 1 to 5: physical, mental, relationships, sleep, nutrition, stress.</p>
+        <input id="wheelScores" placeholder="4,3,4,2,3,2" />
+        <button class="act" id="wheelGo" type="button">Score</button>
+        <p id="wheelOut"></p>
+      </section>
+      <section id="journal">
+        <h1>Gratitude journal</h1>
+        <p class="muted">Private on this browser. Members only for the saved copy.</p>
+        <textarea id="journalText" placeholder="One thing that went right today"></textarea>
+        <button class="act" id="journalSave" type="button">Save</button>
+        <button class="act" id="journalExport" type="button">Export</button>
+        <div id="journalList"></div>
+      </section>
+      <section id="recipes">
+        <h1>Recipes</h1>
+        <select id="diet"><option>All</option><option>Keto</option><option>Vegan</option><option>Paleo</option><option>Gluten-Free</option></select>
+        <div id="recipeList"></div>
+      </section>
+      <section id="meals">
+        <h1>Meal planner</h1>
+        <input id="mealDay" placeholder="Monday dinner" />
+        <button class="act" id="mealAdd" type="button">Add</button>
+        <button class="act" id="grocery" type="button">Grocery list</button>
+        <div id="mealList"></div>
+      </section>
+      <section id="nutrition">
+        <h1>Nutrition note</h1>
+        <textarea id="mealNote" placeholder="What you ate"></textarea>
+        <button class="act" id="scoreMeal" type="button">Feedback</button>
+        <p id="mealScore"></p>
+      </section>
+      <section id="community">
+        <h1>Member community</h1>
+        <p class="muted">Sign in through the member portal to post. Visitors can read.</p>
+        <textarea id="post" placeholder="A win or a question"></textarea>
+        <button class="act" id="postGo" type="button">Post</button>
+        <div id="board"></div>
+      </section>
+      <section id="stories">
+        <h1>Transformations</h1>
+        <article class="card"><h3>Alex R.</h3><p>Hip tightness down after three doorstep stretches.</p></article>
+        <article class="card"><h3>Jordan L.</h3><p>Desk posture better after two weeks.</p></article>
+        <p><a href="superstars.html">Superstars wall</a></p>
+      </section>
+      <section id="events">
+        <h1>Live events</h1>
+        <article class="card"><h3>Sunday stretch club</h3><p>Group mobility, Tampa. Text 240-571-7253.</p></article>
+        <article class="card"><h3>Corporate desk reset</h3><p>30-minute office visit. Request on the homepage.</p></article>
+      </section>
+      <section id="coach">
+        <h1>Wellness coach</h1>
+        <input id="ask" placeholder="Ask about a workout or habit" />
+        <button class="act" id="askGo" type="button">Ask</button>
+        <p id="askOut"></p>
+      </section>
+      <section id="habits">
+        <h1>Habits</h1>
+        <div class="grid" id="habitList"></div>
+        <div class="wheel" id="spin">Spin</div>
+        <button class="act" id="spinGo" type="button">Spin a habit</button>
+        <p id="spinOut"></p>
+      </section>
+      <section id="body">
+        <h1>Body map</h1>
+        <div class="filters" id="bodyMap"></div>
+        <p id="bodyOut">Pick a muscle.</p>
+      </section>
+      <section id="sleep">
+        <h1>Sleep and stress</h1>
+        <select id="sleepHours"><option>Under 6</option><option>6 to 7</option><option>7 to 9</option></select>
+        <select id="stress"><option>Low</option><option>Medium</option><option>High</option></select>
+        <button class="act" id="sleepGo" type="button">Check</button>
+        <p id="sleepOut"></p>
+      </section>
+      <section id="vision">
+        <h1>Vision board</h1>
+        <input id="visionText" placeholder="A goal for this month" />
+        <button class="act" id="visionAdd" type="button">Pin it</button>
+        <div id="visionList"></div>
+      </section>
+    </div>
+  </main>
+  <script>
+    const key = "casseus-wellness";
+    const load = () => JSON.parse(localStorage.getItem(key) || "{}");
+    const save = (data) => localStorage.setItem(key, JSON.stringify(data));
+    const tabs = ["dash","workouts","quiz","progress","generator","challenges","calc","calm","mood","wheel","journal","recipes","meals","nutrition","community","stories","events","coach","habits","body","sleep","vision"];
+    const labels = ["Dashboard","Workouts","Quiz","Progress","Generator","Challenges","Calculators","Calm","Mood","Wheel","Journal","Recipes","Meals","Nutrition","Community","Stories","Events","Coach","Habits","Body map","Sleep","Vision"];
+    document.getElementById("nav").innerHTML = tabs.map((id, i) => `<button data-tab="${id}" type="button">${labels[i]}</button>`).join("");
+    document.getElementById("nav").onclick = (e) => {
+      const id = e.target.dataset.tab; if (!id) return;
+      document.querySelectorAll("section").forEach((s) => s.classList.remove("active"));
+      document.querySelectorAll("nav button").forEach((b) => b.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+      e.target.classList.add("active");
+    };
+    const quotes = ["Move the joint you avoid.", "A short session still counts.", "We'll bring it to you."];
+    document.getElementById("quote").textContent = quotes[new Date().getDate() % quotes.length];
+    const workouts = [
+      ["Hip opener", "Beginner", "Home", "Hips", "90 seconds each side."],
+      ["Desk reset", "Beginner", "Home", "Neck", "Chin tuck and chest open."],
+      ["Split squat", "Intermediate", "Gym", "Legs", "8 each side."],
+      ["Band row", "Intermediate", "Home", "Back", "12 slow rows."],
+      ["PNF hamstring", "Advanced", "Gym", "Hamstrings", "Partner or trainer only."]
+    ];
+    function drawWorkouts() {
+      const level = document.getElementById("level").value;
+      const place = document.getElementById("place").value;
+      const muscle = document.getElementById("muscle").value.toLowerCase();
+      document.getElementById("workoutList").innerHTML = workouts.filter((w) => (level === "All levels" || w[1] === level) && (place === "Home or gym" || w[2] === place) && w[3].toLowerCase().includes(muscle)).map((w) => `<article class="item"><h3>${w[0]}</h3><p>${w[1]} · ${w[2]} · ${w[3]}</p><p>${w[4]}</p><a href="https://youtube.com/@willcasseus576">Video on our channel</a></article>`).join("");
+    }
+    ["level","place","muscle"].forEach((id) => document.getElementById(id).addEventListener("input", drawWorkouts));
+    drawWorkouts();
+    document.getElementById("quizGo").onclick = () => {
+      const email = document.getElementById("qEmail").value;
+      const data = load(); data.leads = data.leads || []; if (email) data.leads.push(email); save(data);
+      document.getElementById("quizOut").textContent = document.getElementById("qLevel").value + " " + document.getElementById("qGoal").value + " plan: two doorstep sessions a week, plus the 8-minute home stretch. Text 240-571-7253 to book.";
+    };
+    document.getElementById("saveProgress").onclick = () => {
+      const file = document.getElementById("photo").files[0];
+      const write = (photo) => {
+        const data = load(); data.progress = data.progress || [];
+        data.progress.unshift({ weight: document.getElementById("weight").value, measure: document.getElementById("measure").value, day: new Date().toLocaleDateString(), photo });
+        data.streak = (data.streak || 0) + 1; save(data); render();
+      };
+      if (!file) write("");
+      else { const reader = new FileReader(); reader.onload = () => write(reader.result); reader.readAsDataURL(file); }
+    };
+    document.getElementById("gen").onclick = () => {
+      const moves = { Mobility: "hip opener, thoracic twist, calf stretch", Strength: "squat, row, glute bridge", Recovery: "breathing, neck release, easy walk" };
+      document.getElementById("genOut").textContent = document.getElementById("minutes").value + " minutes, " + document.getElementById("equip").value + ": " + moves[document.getElementById("goal").value] + ".";
+    };
+    document.getElementById("challengeList").innerHTML = ["30-day mobility", "Step challenge", "Plank challenge"].map((c) => `<article class="item"><h3>${c}</h3><button class="act" type="button">Join</button></article>`).join("");
+    document.getElementById("calcGo").onclick = () => {
+      const kg = Number(document.getElementById("kg").value), cm = Number(document.getElementById("cm").value);
+      if (!kg || !cm) return;
+      const bmi = kg / ((cm / 100) ** 2);
+      const cal = Math.round(kg * 30);
+      document.getElementById("calcOut").textContent = `BMI ${bmi.toFixed(1)}. Rough calories ${cal}. Protein about ${Math.round(kg * 1.6)} g. Water about ${Math.round(kg * 35)} ml.`;
+    };
+    document.querySelectorAll("[data-sound]").forEach((b) => b.onclick = () => {
+      const ctx = new AudioContext(); const o = ctx.createOscillator(); const g = ctx.createGain();
+      o.frequency.value = b.dataset.sound === "sleep" ? 174 : 220; o.connect(g); g.connect(ctx.destination); g.gain.value = 0.04; o.start(); setTimeout(() => o.stop(), 4000);
+    });
+    document.getElementById("moodSave").onclick = () => {
+      const data = load(); data.moods = data.moods || []; data.moods.push(document.getElementById("moodPick").value); save(data);
+      document.getElementById("moodOut").textContent = data.moods.slice(-5).join(", ") + ". If tight, do the desk reset.";
+    };
+    document.getElementById("wheelGo").onclick = () => {
+      const nums = document.getElementById("wheelScores").value.split(",").map(Number).filter((n) => n);
+      document.getElementById("wheelOut").textContent = nums.length ? "Average " + (nums.reduce((a,b)=>a+b,0) / nums.length).toFixed(1) + ". Lowest area gets the next habit." : "Enter six scores.";
+    };
+    document.getElementById("journalSave").onclick = () => {
+      const data = load(); data.journal = data.journal || []; data.journal.push(document.getElementById("journalText").value); save(data); render();
+    };
+    document.getElementById("journalExport").onclick = () => {
+      const blob = new Blob([(load().journal || []).join("\n")], { type: "text/plain" });
+      const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "gratitude.txt"; a.click();
+    };
+    const recipes = [["Salmon and greens", "Keto", "salmon, greens, olive oil"], ["Lentil bowl", "Vegan", "lentils, rice, spinach"], ["Egg plate", "Gluten-Free", "eggs, fruit, yogurt"]];
+    function drawRecipes() {
+      const diet = document.getElementById("diet").value;
+      document.getElementById("recipeList").innerHTML = recipes.filter((r) => diet === "All" || r[1] === diet).map((r) => `<article class="item"><h3>${r[0]}</h3><p>${r[1]}</p><p>Shop: ${r[2]}</p></article>`).join("");
+    }
+    document.getElementById("diet").onchange = drawRecipes; drawRecipes();
+    document.getElementById("mealAdd").onclick = () => { const data = load(); data.meals = data.meals || []; data.meals.push(document.getElementById("mealDay").value); save(data); render(); };
+    document.getElementById("grocery").onclick = () => { document.getElementById("mealList").insertAdjacentHTML("beforeend", "<p>Grocery: eggs, greens, rice, yogurt, fruit.</p>"); };
+    document.getElementById("scoreMeal").onclick = () => {
+      const text = document.getElementById("mealNote").value.toLowerCase();
+      document.getElementById("mealScore").textContent = /vegetable|greens|fruit/.test(text) ? "Solid plate. Add protein if it is missing." : "Add a vegetable and a protein next meal.";
+    };
+    document.getElementById("postGo").onclick = () => {
+      if (!localStorage.getItem("casseus-member")) { document.getElementById("board").insertAdjacentHTML("afterbegin", "<p class='muted'>Members post after portal sign-in. <a href='member-portal.html'>Open the portal</a></p>"); return; }
+      const data = load(); data.board = data.board || []; data.board.push(document.getElementById("post").value); save(data); render();
+    };
+    document.getElementById("askGo").onclick = () => {
+      const q = document.getElementById("ask").value.toLowerCase();
+      document.getElementById("askOut").textContent = q.includes("sleep") ? "Same wake time, and the 4-minute breathing track." : "Pick 20 minutes, home, mobility, then book a doorstep stretch if you want hands-on work.";
+    };
+    const habits = ["Water", "Exercise", "Sleep", "Meditation", "Reading"];
+    document.getElementById("habitList").innerHTML = habits.map((h) => `<article class="item"><h3>${h}</h3><button class="act" data-habit="${h}" type="button">Done</button></article>`).join("");
+    document.getElementById("habitList").onclick = (e) => {
+      if (!e.target.dataset.habit) return;
+      const data = load(); data.habits = data.habits || {}; data.habits[e.target.dataset.habit] = (data.habits[e.target.dataset.habit] || 0) + 1; data.streak = (data.streak || 0) + 1; save(data); render();
+    };
+    document.getElementById("spinGo").onclick = () => {
+      const pick = habits[Math.floor(Math.random() * habits.length)];
+      document.getElementById("spinOut").textContent = pick;
+    };
+    document.getElementById("bodyMap").innerHTML = ["Hips","Back","Neck","Shoulders"].map((m) => `<button class="act" data-muscle="${m}" type="button">${m}</button>`).join("");
+    document.getElementById("bodyMap").onclick = (e) => { if (e.target.dataset.muscle) document.getElementById("bodyOut").textContent = e.target.dataset.muscle + ": 8 slow reps, then a doorstep stretch if it stays tight."; };
+    document.getElementById("sleepGo").onclick = () => { document.getElementById("sleepOut").textContent = document.getElementById("stress").value === "High" ? "High stress. Use the breathing track and a short walk." : "Sleep window looks usable. Keep the same wake time."; };
+    document.getElementById("visionAdd").onclick = () => { const data = load(); data.vision = data.vision || []; data.vision.push(document.getElementById("visionText").value); save(data); render(); };
+    function render() {
+      const data = load();
+      document.getElementById("streak").textContent = (data.streak || 0) + " days";
+      const habitCount = Object.values(data.habits || {}).reduce((a, b) => a + b, 0);
+      document.getElementById("score").textContent = Math.min(100, 40 + habitCount * 5 + (data.moods || []).length * 3);
+      document.getElementById("badges").textContent = (data.streak || 0) > 2 ? "Three-day streak" : "Start a habit to earn the first badge.";
+      document.getElementById("progressList").innerHTML = (data.progress || []).map((p) => `<article class="item">${p.photo ? `<img class="shot" src="${p.photo}" alt="Progress photo" />` : ""}<p>${p.day}: ${p.weight || "—"} lb / ${p.measure || "—"} in</p></article>`).join("") || "<p class='muted'>No check-ins yet.</p>";
+      document.getElementById("journalList").innerHTML = (data.journal || []).map((j) => `<p>${j}</p>`).join("");
+      document.getElementById("mealList").innerHTML = (data.meals || []).map((m) => `<p>${m}</p>`).join("");
+      document.getElementById("board").innerHTML = (data.board || ["Post a win after you sign in."]).map((p) => `<p>${p}</p>`).join("");
+      document.getElementById("visionList").innerHTML = (data.vision || []).map((v) => `<p>${v}</p>`).join("");
+    }
+    render();
+  </script>
+</body>
+</html>

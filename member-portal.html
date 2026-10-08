@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Member Portal | Casseus Health & Wellness</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .portal { padding: 120px 0 64px; }
+    .portal-grid { display: grid; grid-template-columns: 220px 1fr; gap: 18px; }
+    .portal-card { background: #fff; border-radius: 14px; box-shadow: 0 10px 40px rgba(20,40,51,.12); padding: 20px; }
+    .portal nav button { display: block; width: 100%; text-align: left; background: transparent; border: 0; border-radius: 10px; padding: 10px 12px; font-weight: 600; color: #1a3a4d; cursor: pointer; }
+    .portal nav button.active, .portal nav button:hover { background: #e7f1ed; color: #3f6d5e; }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 14px; }
+    .stat strong { display: block; font-family: Montserrat, sans-serif; font-size: 1.3rem; margin-top: 4px; }
+    .muted { color: #64748b; }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+    .portal input, .portal select, .portal textarea { width: 100%; border: 1px solid #d7e3df; border-radius: 10px; padding: 11px; margin-top: 6px; }
+    .portal label { font-size: .82rem; font-weight: 600; display: block; margin-top: 12px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 8px 4px; border-bottom: 1px solid #d7e3df; }
+    .pill { background: #e7f1ed; color: #3f6d5e; border-radius: 999px; padding: 3px 8px; font-size: .75rem; font-weight: 700; }
+    .notice { background: #f7f3ea; border-left: 4px solid #c4a46a; padding: 10px 12px; border-radius: 8px; }
+    .mail, .star-card { border: 1px solid #d7e3df; border-radius: 12px; padding: 12px; margin-top: 12px; }
+    .star-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .star-card img, .hero-shot { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; }
+    .check { display: flex; gap: 8px; align-items: flex-start; font-size: .86rem; margin-top: 10px; }
+    .check input { width: auto; }
+    .login-box { max-width: 460px; margin: 0 auto; }
+    @media (max-width: 800px) { .portal-grid, .stats, .star-grid { grid-template-columns: 1fr; } .portal nav { display: flex; gap: 6px; overflow: auto; } .portal nav button { width: auto; white-space: nowrap; } }
+  </style>
+</head>
+<body>
+  <header class="header scrolled" id="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><img src="assets/logo.jpg" alt="Casseus Health & Wellness logo" /></div>
+        <div class="logo-text"><span class="logo-main">CASSEUS</span><span class="logo-sub">HEALTH & WELLNESS</span></div>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#booking">Book</a>
+        <a href="store.html">Shop</a>
+        <a href="member-portal.html" class="active-page">Members</a>
+        <a href="affiliate.html">Affiliates</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </header>
+
+  <main class="portal">
+    <div class="container">
+      <section id="loginView" class="portal-card login-box">
+        <p class="pill">Members</p>
+        <h1>Welcome back</h1>
+        <p class="muted">Book 90 days out, see receipts, sign your waiver, and post a Superstar update. We'll bring it to you.</p>
+        <form id="loginForm">
+          <label for="email">Email</label>
+          <input id="email" type="email" required />
+          <label for="password">Password</label>
+          <input id="password" type="password" required />
+          <p id="loginError" class="muted"></p>
+          <button class="btn btn-primary" type="submit">Sign in</button>
+        </form>
+        <p class="muted">Member preview: alex@email.com / mobility. Owner reports are a separate login.</p>
+      </section>
+
+      <section id="app" hidden>
+        <div class="portal-grid">
+          <aside class="portal-card">
+            <nav>
+              <button class="active" data-panel="home" type="button">Dashboard</button>
+              <button data-panel="schedule" type="button">Schedule</button>
+              <button data-panel="package" type="button">Package & receipts</button>
+              <button data-panel="health" type="button">Waiver</button>
+              <button data-panel="stars" type="button">Superstars</button>
+              <button data-panel="watch" id="watchNav" type="button" hidden>Watch bot</button>
+              <a id="dashLink" href="dashboard.html" hidden>Owner dashboard</a>
+              <button data-panel="profile" type="button">Profile</button>
+              <button id="exportReport" type="button" hidden>Download spreadsheet</button>
+              <button id="logout" type="button">Sign out</button>
+            </nav>
+          </aside>
+          <div>
+            <div class="panel active" id="home">
+              <div class="stats">
+                <article class="portal-card stat"><span class="muted">Next session</span><strong id="nextSession">—</strong></article>
+                <article class="portal-card stat"><span class="muted">Sessions left</span><strong id="left">—</strong></article>
+                <article class="portal-card stat"><span class="muted">Credit</span><strong id="credit">—</strong></article>
+              </div>
+              <article class="portal-card">
+                <h2 id="greet">Hi</h2>
+                <p class="muted" id="subline"></p>
+                <img class="hero-shot" src="session.jpg" alt="Assisted stretch session" />
+                <p class="muted">Sunday–Friday, 7:00 AM–7:00 PM, up to 90 days out. Tampa and Bradenton travel is free.</p>
+              </article>
+            </div>
+            <div class="panel" id="schedule">
+              <article class="portal-card">
+                <h2>Book a session</h2>
+                <p class="muted" id="windowNote"></p>
+                <table><tbody id="allRows"></tbody></table>
+                <div class="row">
+                  <input id="newDate" type="date" />
+                  <select id="newTime"><option>7:00 AM</option><option>9:30 AM</option><option>12:00 PM</option><option>4:30 PM</option><option>7:00 PM</option></select>
+                  <button class="btn btn-primary" id="addSession" type="button">Hold this slot</button>
+                </div>
+                <p class="muted" id="bookHint">Saturdays are closed. Text 240-571-7253 to confirm a hold.</p>
+              </article>
+            </div>
+            <div class="panel" id="package">
+              <article class="portal-card">
+                <h2 id="planName">Package</h2>
+                <p class="muted" id="planMeta"></p>
+                <p class="notice">Every package or shop purchase emails a receipt, a thank-you from Will, and waiver LW-2026-01.</p>
+                <div class="row">
+                  <button class="btn btn-primary" id="buyPackage" type="button">Record package purchase</button>
+                  <button class="btn btn-primary" id="buyShop" type="button">Record shop purchase</button>
+                  <a class="btn btn-primary" href="store.html">Open shop</a>
+                </div>
+                <p class="muted" id="purchaseNote"></p>
+                <div id="receiptList"></div>
+              </article>
+            </div>
+            <div class="panel" id="health">
+              <article class="portal-card">
+                <h2>Liability waiver</h2>
+                <p>Status: <strong id="waiverState">Not sent</strong></p>
+                <div id="waiverBox" class="notice" hidden>
+                  <strong id="waiverTitle"></strong>
+                  <p id="waiverBody"></p>
+                  <label for="signName">Sign as</label>
+                  <input id="signName" />
+                  <button class="btn btn-primary" id="signWaiver" type="button">Sign waiver</button>
+                </div>
+              </article>
+            </div>
+            <div class="panel" id="stars">
+              <article class="portal-card">
+                <h2>Superstars</h2>
+                <p class="muted">Only a signed-in member can post. This wall is read-only for everyone else.</p>
+                <label for="starName">Name to show</label>
+                <input id="starName" />
+                <label for="starQuote">Testimonial</label>
+                <textarea id="starQuote" rows="4"></textarea>
+                <label for="starPhoto">Progress picture</label>
+                <input id="starPhoto" type="file" accept="image/*" />
+                <label class="check"><input id="starConsent" type="checkbox" /> Casseus may show this quote and photo. Text 240-571-7253 to take it down.</label>
+                <button class="btn btn-primary" id="postStar" type="button">Post</button>
+                <p class="muted" id="starNote"></p>
+                <div class="star-grid" id="starGrid"></div>
+              </article>
+            </div>
+            <div class="panel" id="watch">
+              <article class="portal-card">
+                <h2>Watch bot</h2>
+                <p class="muted">Owner only. It checks bookings, sales, waivers, testimonials, and inquiry messages, then flags discrepancies and anything that needs you now.</p>
+                <div id="watchList"></div>
+                <p class="muted">A real emergency is a phone call, not a dashboard flag. Call 911 if someone is in danger, then text 240-571-7253.</p>
+              </article>
+            </div>
+            <div class="panel" id="profile">
+              <article class="portal-card">
+                <h2>Profile</h2>
+                <label for="phone">Phone</label><input id="phone" />
+                <label for="area">Area</label>
+                <select id="area"><option>Tampa</option><option>Bradenton</option><option>Sarasota</option></select>
+                <label for="address">Session address</label><input id="address" />
+                <button class="btn btn-primary" id="saveProfile" type="button">Save</button>
+                <p class="muted" id="profileSaved"></p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo"><div class="logo-icon"><img src="assets/logo.jpg" alt="" /></div><div class="logo-text"><span class="logo-main">CASSEUS</span><span class="logo-sub">HEALTH & WELLNESS</span></div></div>
+          <p>Mobile personal training and assisted stretching in Tampa, Bradenton, and Sarasota.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="index.html#booking">Book Now</a>
+          <a href="store.html">Shop</a>
+          <a href="member-portal.html">Members</a>
+          <a href="superstars.html">Superstars</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p><i class="fas fa-phone"></i> <a href="tel:2405717253">240-571-7253</a></p>
+          <p><i class="fas fa-envelope"></i> <a href="mailto:casseus137@gmail.com">casseus137@gmail.com</a></p>
+          <p><i class="fas fa-map-marker-alt"></i> Bradenton • Sarasota • Tampa, FL</p>
+        </div>
+      </div>
+      <p>© 2026 Casseus Health & Wellness. Members, receipts, waivers, and Superstars are part of this site.</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+    const DEMO = { email:"alex@email.com", password:"mobility", name:"Alex", plan:"30-min stretch · 3x/week Recovery", price:"$715/mo", left:7, total:13, credit:25, phone:"813-555-0148", area:"Tampa", address:"Home office, Tampa", sessions:[{date:"Fri, Oct 2", time:"7:00 AM", service:"Assisted stretch", status:"Confirmed"}] };
+    const key = "casseus-member";
+    const esc = (s) => String(s||"").replace(/[&<>"]/g, (c) => ({"&":"&","<":"<",">":">","\"":"""}[c]));
+    const load = () => JSON.parse(localStorage.getItem(key) || "null");
+    const save = (d) => localStorage.setItem(key, JSON.stringify(d));
+    function render(data) {
+      document.getElementById("greet").textContent = "Hi, " + data.name;
+      document.getElementById("subline").textContent = data.plan + " · " + data.area;
+      document.getElementById("nextSession").textContent = data.sessions[0] ? data.sessions[0].date + " · " + data.sessions[0].time : "None held";
+      document.getElementById("left").textContent = data.left + " of " + data.total;
+      document.getElementById("credit").textContent = "$" + data.credit;
+      document.getElementById("planName").textContent = data.plan;
+      document.getElementById("planMeta").textContent = data.price + ". Book on this site, Sunday–Friday, 90 days out.";
+      document.getElementById("phone").value = data.phone;
+      document.getElementById("area").value = data.area;
+      document.getElementById("address").value = data.address;
+      if (!document.getElementById("starName").value) document.getElementById("starName").value = data.name;
+      const waiver = data.waiver || { status:"Not sent" };
+      document.getElementById("waiverState").textContent = waiver.status;
+      const box = document.getElementById("waiverBox");
+      box.hidden = !(waiver.status === "Sent" || waiver.status === "Signed");
+      if (!box.hidden) {
+        document.getElementById("waiverTitle").textContent = waiver.status;
+        document.getElementById("waiverBody").textContent = waiver.reason || "";
+        document.getElementById("signName").value = waiver.signedBy || data.name;
+        document.getElementById("signWaiver").hidden = waiver.status === "Signed";
+      }
+      document.getElementById("allRows").innerHTML = (data.sessions||[]).map((s,i) => `<tr><td>${esc(s.date)} ${esc(s.time)}</td><td>${esc(s.service)}</td><td><span class="pill">${esc(s.status)}</span></td><td><button data-cancel="${i}" type="button">Release</button></td></tr>`).join("") || "<tr><td>No sessions held.</td></tr>";
+      document.getElementById("receiptList").innerHTML = (data.receipts||[]).map((r) => `<article class="mail"><p class="pill">Receipt ${esc(r.id)}</p><h3>${esc(r.item)}</h3><p class="muted">${esc(r.when)} · ${esc(r.amount)}</p><p>${esc(r.thanks)}</p></article>`).join("");
+      const posts = data.stars || [];
+      document.getElementById("starGrid").innerHTML = posts.map((p) => `<article class="star-card">${p.photo ? `<img src="${p.photo}" alt="" />` : ""}<h3>${esc(p.name)}</h3><p>${esc(p.quote)}</p></article>`).join("");
+    }
+    const OWNER = { email: "will@casseuswellness.com", password: "portal-owner" };
+    function runWatch(data) {
+      const flags = [];
+      const urgent = /chest pain|can't breathe|cannot breathe|passed out|emergency|911|severe pain|injury|bleeding/i;
+      const text = [data.messages, ...(data.stars || []).map((p) => p.quote), ...JSON.parse(localStorage.getItem("casseus-inquiries") || "[]").map((r) => r.message)].join(" ");
+      if (urgent.test(text)) flags.push(["Emergency", "A note or inquiry mentions pain, injury, or an emergency. Call them now. If someone is in danger, call 911."]);
+      if (!data.waiver || data.waiver.status !== "Signed") flags.push(["Red flag", "Waiver is not signed. Do not run the next session until LW-2026-01 is signed."]);
+      (data.receipts || []).forEach((r) => { if (!data.waiver) flags.push(["Discrepancy", "Receipt " + r.id + " has no waiver on file."]); });
+      if ((data.sessions || []).length && data.left + data.sessions.length !== data.total) flags.push(["Discrepancy", "Sessions left plus held sessions do not match the package total."]);
+      (data.stars || []).filter((p) => !p.member || !p.publicOk).forEach((p) => flags.push(["Red flag", "Testimonial from " + p.name + " is missing member consent."]));
+      if (!flags.length) flags.push(["Clear", "No discrepancies, red flags, or emergency wording in this portal report."]);
+      document.getElementById("watchList").innerHTML = flags.map((f) => `<p class="notice"><strong>${esc(f[0])}</strong> — ${esc(f[1])}</p>`).join("");
+    }
+    function showApp(data) {
+      document.getElementById("loginView").hidden = true;
+      document.getElementById("app").hidden = false;
+      const owner = data.role === "owner";
+      document.getElementById("watchNav").hidden = !owner;
+      document.getElementById("dashLink").hidden = !owner;
+      document.getElementById("exportReport").hidden = !owner;
+      const today = new Date(); const max = new Date(); max.setDate(today.getDate()+90);
+      const input = document.getElementById("newDate");
+      const iso = (d) => d.toISOString().slice(0,10);
+      input.min = iso(today); input.max = iso(max); input.value = iso(today);
+      document.getElementById("windowNote").textContent = "Open through " + max.toLocaleDateString("en-US", {month:"short", day:"numeric", year:"numeric"}) + ".";
+      render(data);
+      if (owner) runWatch(data);
+    }
+    document.getElementById("loginForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value.trim().toLowerCase();
+      const password = document.getElementById("password").value;
+      if (email === OWNER.email && password === OWNER.password) {
+        const data = load() || { ...DEMO };
+        data.role = "owner"; data.member = true; data.email = OWNER.email; data.name = "Will";
+        localStorage.setItem("casseus-owner", "1");
+        localStorage.setItem("casseus-member", "1");
+        save(data); showApp(data); return;
+      }
+      if (email !== DEMO.email || password !== DEMO.password) {
+        document.getElementById("loginError").textContent = "Members use their portal login. Owner reports use the owner login.";
+        return;
+      }
+      const data = load() || { ...DEMO }; data.role = "member"; data.member = true; data.email = DEMO.email; localStorage.setItem("casseus-member", "1"); save(data); showApp(data);
+    });
+    document.getElementById("logout").addEventListener("click", () => { localStorage.removeItem(key); location.reload(); });
+    document.getElementById("exportReport").addEventListener("click", () => {
+      const data = load();
+      if (!data || !data.member) return;
+      const lines = [["sheet","receipt_id","member_email","member_name","item_type","item","amount_usd","session_date","session_time","status","waiver_status","posted_date","testimonial"]];
+      (data.sessions || []).forEach((s) => lines.push(["Bookings","",data.email,data.name,"Session",s.service,"",s.date,s.time,s.status,"","",""]));
+      (data.receipts || []).forEach((r) => lines.push(["Purchases",r.id,data.email,data.name,r.item.indexOf("shop") >= 0 ? "Shop" : "Package",r.item,String(r.amount).replace(/[^0-9.]/g,""),"","","Paid",data.waiver ? data.waiver.status : "","",""]));
+      (data.stars || []).forEach((p) => lines.push(["Superstars","",p.member,p.name,"Post","","","","","","Yes",p.posted,p.quote]));
+      const csv = lines.map((row) => row.map((cell) => '"' + String(cell || "").replace(/"/g, '""') + '"').join(",")).join("\n");
+      const blob = new Blob([csv], { type: "text/csv" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "casseus-member-report.csv";
+      a.click();
+    });
+    document.querySelectorAll("[data-panel]").forEach((btn) => btn.addEventListener("click", () => {
+      document.querySelectorAll("[data-panel]").forEach((b) => b.classList.remove("active"));
+      document.querySelectorAll(".panel").forEach((p) => p.classList.remove("active"));
+      btn.classList.add("active"); document.getElementById(btn.dataset.panel).classList.add("active");
+    }));
+    document.getElementById("addSession").addEventListener("click", () => {
+      const data = load();
+      const hint = document.getElementById("bookHint");
+      if (!data || data.left < 1) { hint.textContent = "No sessions left on this package."; return; }
+      const raw = document.getElementById("newDate").value;
+      if (!raw) { hint.textContent = "Pick a date within 90 days."; return; }
+      const picked = new Date(raw + "T12:00:00");
+      const today = new Date(); today.setHours(0,0,0,0);
+      const max = new Date(today); max.setDate(max.getDate() + 90);
+      if (picked < today || picked > max) { hint.textContent = "Members can book today through 90 days out only."; return; }
+      if (picked.getDay() === 6) { hint.textContent = "Saturdays are closed. Pick Sunday–Friday."; return; }
+      data.sessions.push({ date: picked.toLocaleDateString("en-US", {weekday:"short", month:"short", day:"numeric"}), time: document.getElementById("newTime").value, service:"Assisted stretch", status:"Held" });
+      data.left -= 1; save(data); render(data);
+      hint.textContent = "Held through the 90-day window. Text 240-571-7253 to confirm.";
+    });
+    document.getElementById("allRows").addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-cancel]"); if (!btn) return;
+      const data = load(); data.sessions.splice(Number(btn.dataset.cancel), 1); data.left += 1; save(data); render(data);
+    });
+    function purchase(item, amount) {
+      const data = load(); const id = "CHW-" + Date.now().toString().slice(-6);
+      const now = new Date().toLocaleString("en-US", {month:"short", day:"numeric", hour:"numeric", minute:"2-digit"});
+      data.waiver = { status:"Sent", reason:"LW-2026-01 sent with receipt " + id + "." };
+      data.receipts = data.receipts || [];
+      data.receipts.unshift({ id, item, amount, when: now, thanks:"Thank you, " + data.name + ". We'll bring it to you. — Will" });
+      save(data); render(data);
+      document.getElementById("purchaseNote").textContent = "Receipt, thank-you, and waiver sent to " + DEMO.email + ".";
+    }
+    document.getElementById("buyPackage").addEventListener("click", () => purchase("30-min stretch · 3x/week Recovery", "$715.00"));
+    document.getElementById("buyShop").addEventListener("click", () => purchase("Wellness shop order", "$42.18"));
+    document.getElementById("signWaiver").addEventListener("click", () => {
+      const data = load(); const name = document.getElementById("signName").value.trim(); if (!name) return;
+      data.waiver.status = "Signed"; data.waiver.signedBy = name; save(data); render(data);
+    });
+    document.getElementById("saveProfile").addEventListener("click", () => {
+      const data = load(); data.phone = document.getElementById("phone").value; data.area = document.getElementById("area").value; data.address = document.getElementById("address").value; save(data);
+      document.getElementById("profileSaved").textContent = "Saved in this browser."; render(data);
+    });
+    document.getElementById("postStar").addEventListener("click", () => {
+      const data = load();
+      if (!data || !data.member) { document.getElementById("starNote").textContent = "Sign in as a member before posting."; return; }
+      const name = document.getElementById("starName").value.trim();
+      const quote = document.getElementById("starQuote").value.trim();
+      if (!name || !quote || !document.getElementById("starConsent").checked) { document.getElementById("starNote").textContent = "Add a name, a quote, and consent."; return; }
+      const file = document.getElementById("starPhoto").files[0];
+      const finish = (photo) => {
+        data.stars = data.stars || [];
+        data.stars.unshift({ name, quote, photo, posted: new Date().toLocaleDateString(), publicOk: true, member: data.email });
+        save(data); localStorage.setItem("casseus-superstars", JSON.stringify(data.stars));
+        document.getElementById("starNote").textContent = "Posted by member " + data.email + "."; render(data);
+      };
+      if (!file) finish("");
+      else { const reader = new FileReader(); reader.onload = () => finish(reader.result); reader.readAsDataURL(file); }
+    });
+    const existing = load(); if (existing) showApp(existing);
+  </script>
+</body>
+</html>

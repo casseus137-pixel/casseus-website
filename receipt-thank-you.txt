@@ -1,0 +1,18 @@
+Casseus Health & Wellness
+Tampa · Bradenton · Sarasota
+240-571-7253 · casseus137@gmail.com
+
+Receipt {{receipt_id}}
+{{date}}
+{{name}} · {{email}}
+
+{{item}}
+{{amount}}
+Paid by Stripe. We do not store the full card number.
+
+Thank you, {{name}}.
+We'll bring it to you. If this was a package, you can book Sunday–Friday up to 90 days out. If this was a shop order, your member rate applies while a package is active.
+
+Please sign the attached liability waiver, LW-2026-01, before your next session.
+
+— Will Casseus

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Superstars | Casseus Health & Wellness</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .stars { padding: 120px 0 64px; }
+    .star-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
+    .star-card { background: #fff; border-radius: 14px; box-shadow: 0 10px 40px rgba(20,40,51,.12); padding: 16px; }
+    .star-card img, .hero-shot { width: 100%; border-radius: 10px; object-fit: cover; }
+    .hero-shot { max-height: 320px; display: block; margin: 16px 0; }
+    .star-card img { height: 220px; }
+    .muted { color: #64748b; }
+    @media (max-width: 700px) { .star-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="header scrolled" id="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><img src="assets/logo.jpg" alt="Casseus Health & Wellness logo" /></div>
+        <div class="logo-text"><span class="logo-main">CASSEUS</span><span class="logo-sub">HEALTH & WELLNESS</span></div>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#booking">Book</a>
+        <a href="store.html">Shop</a>
+        <a href="member-portal.html">Members</a>
+        <a href="affiliate.html">Affiliates</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </header>
+  <main class="stars">
+    <div class="container">
+      <h1>We'll bring it to you.</h1>
+      <p class="muted">Testimonials and progress pictures from members only. Visitors can read this wall. Writing and photos are posted from the member portal after sign-in.</p>
+      <img class="hero-shot" src="bring-it.jpg" alt="We'll bring it to you" />
+      <a class="btn btn-primary" href="member-portal.html">Members: sign in to post</a>
+      <div class="star-grid" id="wall"></div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-contact">
+        <p><a href="tel:2405717253">240-571-7253</a> · <a href="mailto:casseus137@gmail.com">casseus137@gmail.com</a> · Tampa, Bradenton, Sarasota</p>
+        <p><a href="index.html">Home</a> · <a href="store.html">Shop</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+    const esc = (s) => String(s||"").replace(/[&<>"]/g, (c) => ({"&":"&","<":"<",">":">","\"":"""}[c]));
+    const posts = JSON.parse(localStorage.getItem("casseus-superstars") || "[]").filter((p) => p.publicOk && p.member);
+    document.getElementById("wall").innerHTML = posts.length ? posts.map((p) => `<article class="star-card">${p.photo ? `<img src="${p.photo}" alt="" />` : ""}<h2>${esc(p.name)}</h2><p>${esc(p.quote)}</p><p class="muted">${esc(p.posted)}</p></article>`).join("") : "<article class='star-card'><p class='muted'>No public posts yet. Members add them from the portal.</p></article>";
+  </script>
+</body>
+</html>
