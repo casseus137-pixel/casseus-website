@@ -242,6 +242,7 @@
   const packageGroup = document.getElementById('packageGroup');
   const locationSelect = document.getElementById('location');
   const travelSummary = document.getElementById('travelSummary');
+  const priceSummary = document.getElementById('priceSummary');
   const sessionDate = document.getElementById('sessionDate');
   const sessionTime = document.getElementById('sessionTime');
   const paymentSection = document.getElementById('paymentSection');
@@ -1311,6 +1312,7 @@
 
     if (!loc && !document.getElementById('address')?.value) {
       travelSummary.classList.remove('visible');
+      updatePriceSummary();
       return;
     }
 
@@ -1331,6 +1333,42 @@
     travelSummary.classList.add('visible');
     travelSummary.dataset.fee = result.fee;
     travelSummary.dataset.miles = result.miles;
+    updatePriceSummary();
+  }
+
+  function updatePriceSummary() {
+    if (!priceSummary) return;
+    const type = serviceType.value;
+    if (!type) {
+      priceSummary.classList.remove('visible');
+      priceSummary.innerHTML = '';
+      return;
+    }
+    const pkgId = packageSelect.value;
+    const pkg = PACKAGES[pkgId];
+    const { miles } = estimateMileageFromInputs();
+    const travel = calcTravelFee(locationSelect.value, pkg, miles);
+    let label;
+    let price;
+    if (pkg) {
+      label = 'Package price';
+      price = pkg.price;
+      const owned = getPurchasedPackages().find(p => p.id === pkgId && p.sessionsRemaining > 0);
+      if (owned) {
+        priceSummary.innerHTML = '<strong>Price summary</strong><br>' +
+          label + ': <strong>$' + price + '</strong> — covered by your package<br>' +
+          'Total due: <strong>$' + travel.fee + '</strong>';
+        priceSummary.classList.add('visible');
+        return;
+      }
+    } else {
+      label = 'Session price';
+      price = SINGLE_PRICES[type] || 0;
+    }
+    priceSummary.innerHTML = '<strong>Price summary</strong><br>' +
+      label + ': <strong>$' + price + '</strong><br>' +
+      'Total due: <strong>$' + (price + travel.fee) + '</strong>';
+    priceSummary.classList.add('visible');
   }
 
   function updatePaymentVisibility() {
@@ -1377,7 +1415,7 @@
     serviceType.value = 'free15';
     serviceType.dispatchEvent(new Event('change'));
     document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
-    showToast('Free 15-min stretch selected — pick a date & time below.');
+    showToast('FREE 15-Min Assisted Mobility Stretch selected — pick a date & time below.');
   });
 
   // QR code for free stretch
@@ -1981,7 +2019,7 @@
   const chatQuickReplies = document.getElementById('chatQuickReplies');
 
   const AUTO_REPLIES = {
-    'free 15': "Great choice! Our free 15-minute assisted mobility stretch is a perfect intro. You can book it under Book Now → select \"FREE 15-Min Assisted Mobility Stretch\". We come to you in Tampa, Bradenton & Sarasota!",
+    'free 15': "Great choice! Our FREE 15-Min Assisted Mobility Stretch is a perfect intro. You can book it under Book Now → select \"FREE 15-Min Assisted Mobility Stretch\". We come to you in Tampa, Bradenton & Sarasota!",
     'pricing': "We offer monthly packages for 30-min and 60-min assisted stretching and personal training, with savings when you train more often. Check the Pricing section on this page for full details, or ask about a specific package!",
     'travel': "We serve Tampa, Bradenton & Sarasota, FL. Travel is FREE in Tampa, Bradenton & Sarasota.",
     'stretch': "Assisted stretching (PNF) uses our specialized stretch bench so we can safely lengthen muscles beyond what you can do alone — great for back pain, posture, mobility, and recovery. Want to try a free 15-min session?",

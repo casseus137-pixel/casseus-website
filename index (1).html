@@ -270,7 +270,7 @@ h1,h2,h3,h4,.logo-main,.stat-num{font-family:Montserrat,system-ui,sans-serif}
       <div class="travel-notice">
         <i class="fas fa-map-marker-alt"></i>
         <div>
-          <strong>Doorstep Travel Policy:</strong> Tampa, Bradenton & Sarasota: <span class="free">$0 Travel Fee</span>. Mileage and travel fees do apply based on location.
+          <strong>Doorstep Travel Policy:</strong> Tampa, Bradenton & Sarasota: <span class="free">$0 Travel Fee</span>. Any extended-distance fee is shown at booking before you pay.
         </div>
       </div>
 
@@ -349,6 +349,7 @@ h1,h2,h3,h4,.logo-main,.stat-num{font-family:Montserrat,system-ui,sans-serif}
             <button class="btn btn-primary buy-btn" data-id="s30-6" data-name="30-Min Stretch - 6x/Week" data-price="1040">Select Package</button>
           </div>
         </div>
+        <p class="single-session">Single 30-min stretch session: <strong>$65</strong></p>
       </div>
 
       <!-- 60-Min Stretch -->
@@ -411,6 +412,7 @@ h1,h2,h3,h4,.logo-main,.stat-num{font-family:Montserrat,system-ui,sans-serif}
             <button class="btn btn-primary buy-btn" data-id="s60-6" data-name="60-Min Stretch - 6x/Week" data-price="2080">Select Package</button>
           </div>
         </div>
+        <p class="single-session">Single 60-min stretch session: <strong>$110</strong></p>
       </div>
 
       <!-- 30-Min PT -->
@@ -455,7 +457,7 @@ h1,h2,h3,h4,.logo-main,.stat-num{font-family:Montserrat,system-ui,sans-serif}
             <button class="btn btn-primary buy-btn" data-id="pt30-4" data-name="30-Min PT - 4x/Week" data-price="950">Select Package</button>
           </div>
         </div>
-        <p class="single-session">Single 30-min PT session: <strong>$75</strong> (plus applicable travel fee)</p>
+        <p class="single-session">Single 30-min PT session: <strong>$75</strong></p>
       </div>
 
       <!-- 60-Min PT -->
@@ -500,7 +502,7 @@ h1,h2,h3,h4,.logo-main,.stat-num{font-family:Montserrat,system-ui,sans-serif}
             <button class="btn btn-primary buy-btn" data-id="pt60-4" data-name="60-Min PT - 4x/Week" data-price="1560">Select Package</button>
           </div>
         </div>
-        <p class="single-session">Single 60-min PT session: <strong>$120</strong> (plus applicable travel fee)</p>
+        <p class="single-session">Single 60-min PT session: <strong>$120</strong></p>
       </div>
 
       <div class="pricing-note">
@@ -623,7 +625,7 @@ h1,h2,h3,h4,.logo-main,.stat-num{font-family:Montserrat,system-ui,sans-serif}
       <div class="qr-wrapper">
         <div class="qr-copy">
           <span class="section-tag">No Obligation</span>
-          <h2>Free 15-Minute Assisted Stretch</h2>
+          <h2>FREE 15-Min Assisted Mobility Stretch</h2>
           <p>Scan the QR code or tap the button to claim your free intro session. We come to you in Tampa, Bradenton, or Sarasota.</p>
           <ul class="qr-benefits">
             <li><i class="fas fa-check"></i> Specialized stretch bench</li>
@@ -647,7 +649,7 @@ h1,h2,h3,h4,.logo-main,.stat-num{font-family:Montserrat,system-ui,sans-serif}
       <div class="section-header">
         <span class="section-tag">Reserve Your Spot</span>
         <h2>Book Your Session</h2>
-        <p>Select a package or free session, choose your preferred date & time — you can book up to 90 days in advance, Sunday–Friday. Booked slots become unavailable instantly.</p>
+        <p>Select a package or free session, choose your preferred date & time — you can book up to 30 days in advance, Sunday–Friday. Booked slots become unavailable instantly.</p>
       </div>
 
       <div class="booking-wrapper">
@@ -726,6 +728,7 @@ h1,h2,h3,h4,.logo-main,.stat-num{font-family:Montserrat,system-ui,sans-serif}
             </div>
 
             <div class="travel-summary" id="travelSummary"></div>
+            <div class="price-summary" id="priceSummary"></div>
             <div id="renewalOfferBanner" class="renewal-banner" style="display:none;"></div>
             <div id="bookingAssistantTip" class="assistant-tip" style="display:none;"></div>
 
@@ -748,7 +751,7 @@ h1,h2,h3,h4,.logo-main,.stat-num{font-family:Montserrat,system-ui,sans-serif}
           <div class="sidebar-card">
             <h3><i class="fas fa-info-circle"></i> Availability Notes</h3>
             <ul class="avail-notes">
-              <li>Book up to 90 days in advance, Sunday–Friday</li>
+              <li>Book up to 30 days in advance, Sunday–Friday</li>
               <li>Sessions available Sunday–Friday</li>
               <li>Hours: 7:00 AM – 7:00 PM</li>
               <li>Closed on Saturdays</li>
@@ -927,7 +930,7 @@ h1,h2,h3,h4,.logo-main,.stat-num{font-family:Montserrat,system-ui,sans-serif}
                 <option value="Pricing">Pricing & packages</option>
                 <option value="Scheduling">Scheduling & availability</option>
                 <option value="Travel">Travel areas & fees</option>
-                <option value="Free Session">Free 15-min stretch session</option>
+                <option value="Free Session">FREE 15-Min Assisted Mobility Stretch</option>
                 <option value="Assisted Stretching">Assisted stretching / PNF</option>
                 <option value="Personal Training">Personal training</option>
                 <option value="Health Concerns">Health concerns / injuries</option>
@@ -1354,7 +1357,7 @@ h1,h2,h3,h4,.logo-main,.stat-num{font-family:Montserrat,system-ui,sans-serif}
         <p>By signing this Policy, you agree to contact us first to resolve any billing concern. Initiating a chargeback without first allowing us 10 business days to respond may result in suspension of services and collection of amounts still owed for completed sessions or non-returnable goods.</p>
 
         <h4>7. Travel Fees</h4>
-        <p>Any travel surcharges that apply to a session are non-refundable once that session has been scheduled or completed, unless we cancel the visit.</p>
+        <p>Travel is free in our Tampa, Bradenton & Sarasota zones; any extended-distance fee shown at booking is non-refundable once that session has been scheduled or completed, unless we cancel the visit.</p>
 
         <h4>8. Limitation</h4>
         <p>To the maximum extent permitted by Florida law, our total liability for any purchase is limited to the amount you paid for that specific purchase. Nothing in this Policy limits rights that cannot be waived under applicable law.</p>
@@ -1560,7 +1563,7 @@ h1,h2,h3,h4,.logo-main,.stat-num{font-family:Montserrat,system-ui,sans-serif}
           <span class="chat-time">Just now</span>
         </div>
         <div class="chat-quick-replies" id="chatQuickReplies">
-          <button type="button" data-msg="I'd like to book a free 15-min stretch session">Free 15-min stretch</button>
+          <button type="button" data-msg="I'd like to book a free 15-min stretch session">FREE 15-Min Assisted Mobility Stretch</button>
           <button type="button" data-msg="What are your package prices?">Pricing info</button>
           <button type="button" data-msg="Do you travel to my area?">Travel areas</button>
           <button type="button" data-msg="I have a question about assisted stretching">Assisted stretching</button>
