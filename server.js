@@ -239,7 +239,10 @@ function serveStatic(req, res, pathname) {
     'X-Content-Type-Options': 'nosniff',
   };
 
-  // Cache static assets; keep HTML fresher for deploys
+  // Cache policy: HTML and code assets (JS/CSS) revalidate on every load so
+  // deploys reach visitors immediately; media files (images/fonts/video)
+  // keep a long cache — they are renamed/versioned when they change.
+  const isCode = ext === '.css' || ext === '.js';
   if (isHtml) {
     headers['Cache-Control'] = 'no-cache';
     const link = htmlResourceHints(pathname).join(', ');
@@ -252,8 +255,22 @@ function serveStatic(req, res, pathname) {
         res.writeEarlyHints({ link: htmlResourceHints(pathname) });
       } catch (_) { /* ignore */ }
     }
-  } else if (['.css', '.js', '.webp', '.jpg', '.jpeg', '.png', '.svg', '.woff2', '.mp4'].includes(ext)) {
+  } else if (isCode) {
+    headers['Cache-Control'] = 'no-cache';
+  } else if (['.webp', '.jpg', '.jpeg', '.png', '.svg', '.woff2', '.mp4'].includes(ext)) {
     headers['Cache-Control'] = 'public, max-age=86400, stale-while-revalidate=604800';
+  }
+
+  // Cheap revalidation for code assets: Last-Modified + conditional 304,
+  // so the no-cache policy above costs a round-trip, not a full download.
+  if (isCode) {
+    const mtimeMs = Math.floor(fs.statSync(filePath).mtimeMs / 1000) * 1000;
+    headers['Last-Modified'] = new Date(mtimeMs).toUTCString();
+    const ims = req.headers['if-modified-since'];
+    if (ims && Date.parse(ims) >= mtimeMs) {
+      res.writeHead(304, headers);
+      return res.end();
+    }
   }
 
   res.writeHead(200, headers);
