@@ -78,14 +78,17 @@ h1, h2, h3, h4, .logo-main, .price-amount, .stat-num {
 }
 
 .logo-icon {
+  width: 58px;
   height: 58px;
-  display: flex;
-  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
   flex-shrink: 0;
+  display: flex;
 }
 .logo-icon img {
-  height: 58px;
-  width: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 }
