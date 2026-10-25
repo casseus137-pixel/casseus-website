@@ -427,7 +427,7 @@
       <p><strong>Monthly Investment:</strong> $${pkg.price.toLocaleString()}</p>
       <p><strong>Approx. Sessions:</strong> ${pkg.sessions}/month</p>
       <p><strong>Includes:</strong> Specialized stretch bench setup, intake evaluation, 1-on-1 master trainer care.</p>
-      <p style="margin-top:12px;font-size:0.9rem;color:#64748b;">Travel fees: Tampa/Bradenton $0 · Sarasota $25 (waived on 4+ session packages)</p>
+      <p style="margin-top:12px;font-size:0.9rem;color:#64748b;">Travel fees: Tampa/Bradenton/Sarasota $0</p>
       <p style="margin-top:8px;font-size:0.85rem;color:#64748b;" id="stripePayNote"><em>You will be redirected to Stripe Checkout to pay securely. If Stripe is not configured, demo mode is used.</em></p>
     `;
     waiverStatus.innerHTML = `<i class="fas fa-check-circle"></i> Liability Waiver signed by <strong>${currentWaiverSignature.name}</strong>`;
@@ -1286,17 +1286,9 @@
     // Base policy + light mileage add-on beyond 25 miles from hub
     let fee = 0;
     let detail = '';
-    if (loc === 'tampa' || loc === 'bradenton') {
+    if (loc === 'tampa' || loc === 'bradenton' || loc === 'sarasota') {
       fee = 0;
       detail = 'Zone fee $0';
-    } else if (loc === 'sarasota') {
-      if (pkg && pkg.freq >= 4) {
-        fee = 0;
-        detail = 'Sarasota $25 waived (4+ session package)';
-      } else {
-        fee = 25;
-        detail = 'Sarasota zone surcharge $25';
-      }
     }
     const extraMiles = Math.max(0, (miles || 0) - 25);
     const mileageAdd = extraMiles > 0 ? Math.ceil(extraMiles / 5) * 5 : 0; // $5 per 5 miles beyond 25
@@ -1410,7 +1402,7 @@
     if (!corpTravelEstimate) return;
     const addr = (document.getElementById('corpAddress')?.value || '').toLowerCase();
     let miles = 10, zone = 'Bradenton area', feeNote = 'Confirm travel on your custom quote.';
-    if (addr.includes('sarasota')) { miles = 15; zone = 'Sarasota'; feeNote = 'Sarasota site fee may apply — confirmed on quote.'; }
+    if (addr.includes('sarasota')) { miles = 15; zone = 'Sarasota'; feeNote = 'Travel fee $0 for the Sarasota zone.'; }
     else if (addr.includes('tampa')) { miles = 45; zone = 'Tampa'; feeNote = '~45 mi from hub.'; }
     else if (addr.includes('bradenton') || addr.includes('palmetto')) { miles = 5; zone = 'Bradenton / nearby'; }
     if (!addr.trim()) { corpTravelEstimate.classList.remove('visible'); return; }
@@ -1991,7 +1983,7 @@
   const AUTO_REPLIES = {
     'free 15': "Great choice! Our free 15-minute assisted mobility stretch is a perfect intro. You can book it under Book Now → select \"FREE 15-Min Assisted Mobility Stretch\". We come to you in Tampa, Bradenton & Sarasota!",
     'pricing': "We offer monthly packages for 30-min and 60-min assisted stretching and personal training, with savings when you train more often. Check the Pricing section on this page for full details, or ask about a specific package!",
-    'travel': "We serve Tampa, Bradenton & Sarasota, FL. Travel is FREE in Tampa & Bradenton. Sarasota is a $25 surcharge (waived on 4+ session monthly packages).",
+    'travel': "We serve Tampa, Bradenton & Sarasota, FL. Travel is FREE in Tampa, Bradenton & Sarasota.",
     'stretch': "Assisted stretching (PNF) uses our specialized stretch bench so we can safely lengthen muscles beyond what you can do alone — great for back pain, posture, mobility, and recovery. Want to try a free 15-min session?",
     'book': "You can book right on this website under Book Now. Choose your service, date, and time. Booked slots become unavailable instantly. Need help picking a package? Just ask!",
     'default': "Thanks for your message! A team member will follow up soon. For a faster response, call or text us at 240-571-7253 or email casseus137@gmail.com. You can also book a session or free stretch directly on this site."
