@@ -1171,11 +1171,11 @@
   }
 
   // ========== Booking Form Logic ==========
-  // Book from today up to 1 month (30 days) out
+  // Book from today up to 90 days out
   const todayDate = new Date();
   const today = todayDate.toISOString().split('T')[0];
   const maxBookDate = new Date(todayDate);
-  maxBookDate.setDate(maxBookDate.getDate() + 30);
+  maxBookDate.setDate(maxBookDate.getDate() + 90);
   const maxBook = maxBookDate.toISOString().split('T')[0];
   sessionDate.min = today;
   sessionDate.max = maxBook;
