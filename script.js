@@ -384,19 +384,17 @@
   }
 
   const waiverPad = createSignaturePad(document.getElementById('waiverSignaturePad'));
-  const refundPad = createSignaturePad(document.getElementById('refundSignaturePad'));
+  const refundPad = null; // Single-signature flow: refund policy is signed with the waiver pad
 
   const clearWaiverSignature = document.getElementById('clearWaiverSignature');
   if (clearWaiverSignature && waiverPad) {
     clearWaiverSignature.addEventListener('click', () => waiverPad.clear());
   }
-  const clearRefundSignature = document.getElementById('clearRefundSignature');
-  if (clearRefundSignature && refundPad) {
-    clearRefundSignature.addEventListener('click', () => refundPad.clear());
-  }
 
   function openWaiverModal() {
     waiverAgree.checked = false;
+    const rAgree = document.getElementById('combinedRefundAgree');
+    if (rAgree) rAgree.checked = false;
     const esign = document.getElementById('waiverEsignConsent');
     if (esign) esign.checked = false;
     waiverName.value = '';
@@ -435,7 +433,7 @@
     intakeStatus.innerHTML = `<i class="fas fa-check-circle"></i> Intake form completed by <strong>${currentIntakeData.fullName}</strong>`;
     if (refundPolicyStatus) {
       refundPolicyStatus.innerHTML = currentRefundPolicySignature
-        ? `<i class="fas fa-check-circle"></i> Return & Refund Policy signed by <strong>${currentRefundPolicySignature.name}</strong>`
+        ? `<i class="fas fa-check-circle"></i> Return & Refund Policy signed by <strong>${currentRefundPolicySignature.name}</strong> (same single signature as waiver)`
         : `<i class="fas fa-exclamation-circle" style="color:#c62828;"></i> Return & Refund Policy not signed`;
     }
     const recCheck = document.getElementById('packageRecurring');
@@ -494,6 +492,11 @@
       showToast('You must check the box to agree to the waiver.', 'error');
       return;
     }
+    const refundAgreeBox = document.getElementById('combinedRefundAgree');
+    if (refundAgreeBox && !refundAgreeBox.checked) {
+      showToast('You must check the box to agree to the Return & Refund Policy.', 'error');
+      return;
+    }
     const esign = document.getElementById('waiverEsignConsent');
     if (esign && !esign.checked) {
       showToast('You must consent to electronic signature.', 'error');
@@ -517,6 +520,19 @@
       packageId: selectedPackageId,
       version: 'LW-2026-01',
       signatureImage: waiverPad.toDataURL(),
+      userAgent: navigator.userAgent,
+    };
+
+    // ONE signature covers BOTH documents (Will's rule, 2026-10-26): the same
+    // drawn signature is recorded for the Return & Refund Policy.
+    currentRefundPolicySignature = {
+      name: name,
+      date: currentWaiverSignature.date,
+      signedAt: currentWaiverSignature.date,
+      policyVersion: '2026-01',
+      esignConsent: true,
+      singleSignatureWithWaiver: true,
+      signatureImage: currentWaiverSignature.signatureImage,
       userAgent: navigator.userAgent,
     };
 
@@ -591,70 +607,7 @@
     };
 
     intakeModal.classList.remove('open');
-    openRefundPolicyModal();
-  });
-
-  // ========== Return & Refund Policy (required) ==========
-  const refundPolicyModal = document.getElementById('refundPolicyModal');
-  const refundPolicyClose = document.getElementById('refundPolicyClose');
-  const signRefundPolicyBtn = document.getElementById('signRefundPolicyBtn');
-  const refundPolicyStatus = document.getElementById('refundPolicyStatus');
-
-  function openRefundPolicyModal() {
-    const dateEl = document.getElementById('refundSignDate');
-    if (dateEl) dateEl.value = new Date().toISOString().split('T')[0];
-    const agree = document.getElementById('refundAgree');
-    const esign = document.getElementById('refundEsignConsent');
-    const nameEl = document.getElementById('refundSignName');
-    if (agree) agree.checked = false;
-    if (esign) esign.checked = false;
-    if (nameEl) nameEl.value = (currentIntakeData && currentIntakeData.fullName) || (currentWaiverSignature && currentWaiverSignature.name) || '';
-    if (refundPad) {
-      setTimeout(() => { refundPad.ratio(); refundPad.clear(); }, 50);
-    }
-    refundPolicyModal.classList.add('open');
-  }
-
-  if (refundPolicyClose) {
-    refundPolicyClose.addEventListener('click', () => refundPolicyModal.classList.remove('open'));
-  }
-  if (refundPolicyModal) {
-    refundPolicyModal.addEventListener('click', (e) => {
-      if (e.target === refundPolicyModal) refundPolicyModal.classList.remove('open');
-    });
-  }
-
-  if (signRefundPolicyBtn) {
-    signRefundPolicyBtn.addEventListener('click', () => {
-      const agree = document.getElementById('refundAgree');
-      const name = document.getElementById('refundSignName').value.trim();
-      const date = document.getElementById('refundSignDate').value;
-      if (!agree || !agree.checked) {
-        showToast('You must agree to the Return & Refund Policy to continue.', 'error');
-        return;
-      }
-      const esignConsent = document.getElementById('refundEsignConsent');
-      if (esignConsent && !esignConsent.checked) {
-        showToast('You must consent to electronic signature.', 'error');
-        return;
-      }
-      if (!name || !date) {
-        showToast('Please type your full legal name and date.', 'error');
-        return;
-      }
-      if (!refundPad || refundPad.isEmpty()) {
-        showToast('Please draw your digital signature in the box.', 'error');
-        return;
-      }
-      currentRefundPolicySignature = {
-        name,
-        date,
-        signedAt: new Date().toISOString(),
-        policyVersion: '2026-01',
-        esignConsent: true,
-        signatureImage: refundPad.toDataURL(),
-        userAgent: navigator.userAgent,
-      };
+    if (currentRefundPolicySignature) {
       const policies = JSON.parse(localStorage.getItem('casseus_refund_policies') || '[]');
       policies.push({
         ...currentRefundPolicySignature,
@@ -662,10 +615,9 @@
         packageId: selectedPackageId,
       });
       localStorage.setItem('casseus_refund_policies', JSON.stringify(policies));
-      refundPolicyModal.classList.remove('open');
-      openPaymentModal();
-    });
-  }
+    }
+    openPaymentModal();
+  });
 
   modalClose.addEventListener('click', () => {
     paymentModal.classList.remove('open');
@@ -830,9 +782,9 @@
       return;
     }
     if (!currentRefundPolicySignature) {
-      showToast('You must sign the Return & Refund Policy before purchasing.', 'error');
+      showToast('You must sign the Waiver & Return \u0026 Refund Policy (single signature) before purchasing.', 'error');
       paymentModal.classList.remove('open');
-      openRefundPolicyModal();
+      openWaiverModal();
       return;
     }
 
