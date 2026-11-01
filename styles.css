@@ -555,6 +555,11 @@ section {
   margin-bottom: 24px;
 }
 
+.pricing-grid.single {
+  grid-template-columns: minmax(260px, 420px);
+  justify-content: center;
+}
+
 .price-card {
   background: var(--white);
   border-radius: var(--radius);

@@ -111,6 +111,32 @@
     'pt60-2': { name: '60-Min PT - 2x/Week', price: 865, sessions: 8, type: 'pt60', freq: 2 },
     'pt60-3': { name: '60-Min PT - 3x/Week', price: 1235, sessions: 13, type: 'pt60', freq: 3 },
     'pt60-4': { name: '60-Min PT - 4x/Week', price: 1560, sessions: 17, type: 'pt60', freq: 4 },
+    // 30-min virtual stretch
+    'vs30-1': { name: 'Virtual 30-Min Stretch - 1x/Week', price: 215, sessions: 4, type: 'vstretch30', freq: 1 },
+    'vs30-2': { name: 'Virtual 30-Min Stretch - 2x/Week', price: 390, sessions: 8, type: 'vstretch30', freq: 2 },
+    'vs30-3': { name: 'Virtual 30-Min Stretch - 3x/Week', price: 520, sessions: 13, type: 'vstretch30', freq: 3 },
+    'vs30-4': { name: 'Virtual 30-Min Stretch - 4x/Week', price: 605, sessions: 17, type: 'vstretch30', freq: 4 },
+    'vs30-5': { name: 'Virtual 30-Min Stretch - 5x/Week', price: 645, sessions: 21, type: 'vstretch30', freq: 5 },
+    'vs30-6': { name: 'Virtual 30-Min Stretch - 6x/Week', price: 650, sessions: 26, type: 'vstretch30', freq: 6 },
+    // 60-min virtual stretch
+    'vs60-1': { name: 'Virtual 60-Min Stretch - 1x/Week', price: 390, sessions: 4, type: 'vstretch60', freq: 1 },
+    'vs60-2': { name: 'Virtual 60-Min Stretch - 2x/Week', price: 695, sessions: 8, type: 'vstretch60', freq: 2 },
+    'vs60-3': { name: 'Virtual 60-Min Stretch - 3x/Week', price: 975, sessions: 13, type: 'vstretch60', freq: 3 },
+    'vs60-4': { name: 'Virtual 60-Min Stretch - 4x/Week', price: 1215, sessions: 17, type: 'vstretch60', freq: 4 },
+    'vs60-5': { name: 'Virtual 60-Min Stretch - 5x/Week', price: 1410, sessions: 21, type: 'vstretch60', freq: 5 },
+    'vs60-6': { name: 'Virtual 60-Min Stretch - 6x/Week', price: 1560, sessions: 26, type: 'vstretch60', freq: 6 },
+    // 30-min virtual PT
+    'vpt30-1': { name: 'Virtual 30-Min PT - 1x/Week', price: 195, sessions: 4, type: 'vpt30', freq: 1 },
+    'vpt30-2': { name: 'Virtual 30-Min PT - 2x/Week', price: 345, sessions: 8, type: 'vpt30', freq: 2 },
+    'vpt30-3': { name: 'Virtual 30-Min PT - 3x/Week', price: 455, sessions: 13, type: 'vpt30', freq: 3 },
+    'vpt30-4': { name: 'Virtual 30-Min PT - 4x/Week', price: 520, sessions: 17, type: 'vpt30', freq: 4 },
+    // 60-min virtual PT
+    'vpt60-1': { name: 'Virtual 60-Min PT - 1x/Week', price: 325, sessions: 4, type: 'vpt60', freq: 1 },
+    'vpt60-2': { name: 'Virtual 60-Min PT - 2x/Week', price: 605, sessions: 8, type: 'vpt60', freq: 2 },
+    'vpt60-3': { name: 'Virtual 60-Min PT - 3x/Week', price: 845, sessions: 13, type: 'vpt60', freq: 3 },
+    'vpt60-4': { name: 'Virtual 60-Min PT - 4x/Week', price: 1040, sessions: 17, type: 'vpt60', freq: 4 },
+    // Virtual coaching (monthly subscription; sessions = 4 weekly check-ins/mo)
+    'vcoaching': { name: 'Virtual Coaching - Monthly', price: 149, sessions: 4, type: 'vcoaching', freq: 0 },
   };
 
   const SINGLE_PRICES = {
@@ -119,6 +145,11 @@
     stretch60: 110,
     pt30: 75,
     pt60: 120,
+    vpt30: 50,
+    vpt60: 80,
+    vstretch30: 50,
+    vstretch60: 90,
+    vcoaching: 149,
   };
 
   const SERVICE_LABELS = {
@@ -127,6 +158,11 @@
     stretch60: '60-Min Full-Body Stretch',
     pt30: '30-Min Personal Training',
     pt60: '60-Min Personal Training',
+    vpt30: '30-Min Virtual Personal Training',
+    vpt60: '60-Min Virtual Personal Training',
+    vstretch30: '30-Min Virtual Stretch & Mobility',
+    vstretch60: '60-Min Virtual Stretch & Mobility',
+    vcoaching: 'Virtual Coaching (Monthly)',
   };
 
   // ========== Time Slots ==========

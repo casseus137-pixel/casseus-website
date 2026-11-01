@@ -27,6 +27,27 @@ const PACKAGES = {
   'pt60-2': { name: '60-Min PT - 2x/Week', price: 865, sessions: 8 },
   'pt60-3': { name: '60-Min PT - 3x/Week', price: 1235, sessions: 13 },
   'pt60-4': { name: '60-Min PT - 4x/Week', price: 1560, sessions: 17 },
+  'vs30-1': { name: 'Virtual 30-Min Stretch - 1x/Week', price: 215, sessions: 4 },
+  'vs30-2': { name: 'Virtual 30-Min Stretch - 2x/Week', price: 390, sessions: 8 },
+  'vs30-3': { name: 'Virtual 30-Min Stretch - 3x/Week', price: 520, sessions: 13 },
+  'vs30-4': { name: 'Virtual 30-Min Stretch - 4x/Week', price: 605, sessions: 17 },
+  'vs30-5': { name: 'Virtual 30-Min Stretch - 5x/Week', price: 645, sessions: 21 },
+  'vs30-6': { name: 'Virtual 30-Min Stretch - 6x/Week', price: 650, sessions: 26 },
+  'vs60-1': { name: 'Virtual 60-Min Stretch - 1x/Week', price: 390, sessions: 4 },
+  'vs60-2': { name: 'Virtual 60-Min Stretch - 2x/Week', price: 695, sessions: 8 },
+  'vs60-3': { name: 'Virtual 60-Min Stretch - 3x/Week', price: 975, sessions: 13 },
+  'vs60-4': { name: 'Virtual 60-Min Stretch - 4x/Week', price: 1215, sessions: 17 },
+  'vs60-5': { name: 'Virtual 60-Min Stretch - 5x/Week', price: 1410, sessions: 21 },
+  'vs60-6': { name: 'Virtual 60-Min Stretch - 6x/Week', price: 1560, sessions: 26 },
+  'vpt30-1': { name: 'Virtual 30-Min PT - 1x/Week', price: 195, sessions: 4 },
+  'vpt30-2': { name: 'Virtual 30-Min PT - 2x/Week', price: 345, sessions: 8 },
+  'vpt30-3': { name: 'Virtual 30-Min PT - 3x/Week', price: 455, sessions: 13 },
+  'vpt30-4': { name: 'Virtual 30-Min PT - 4x/Week', price: 520, sessions: 17 },
+  'vpt60-1': { name: 'Virtual 60-Min PT - 1x/Week', price: 325, sessions: 4 },
+  'vpt60-2': { name: 'Virtual 60-Min PT - 2x/Week', price: 605, sessions: 8 },
+  'vpt60-3': { name: 'Virtual 60-Min PT - 3x/Week', price: 845, sessions: 13 },
+  'vpt60-4': { name: 'Virtual 60-Min PT - 4x/Week', price: 1040, sessions: 17 },
+  'vcoaching': { name: 'Virtual Coaching - Monthly', price: 149, sessions: 4 },
 };
 
 const SINGLES = {
@@ -34,9 +55,14 @@ const SINGLES = {
   stretch60: { name: '60-Min Full-Body Stretch', price: 110 },
   pt30: { name: '30-Min Personal Training', price: 75 },
   pt60: { name: '60-Min Personal Training', price: 120 },
+  vstretch30: { name: '30-Min Virtual Stretch & Mobility', price: 50 },
+  vstretch60: { name: '60-Min Virtual Stretch & Mobility', price: 90 },
+  vpt30: { name: '30-Min Virtual Personal Training', price: 50 },
+  vpt60: { name: '60-Min Virtual Personal Training', price: 80 },
+  vcoaching: { name: 'Virtual Coaching - Monthly', price: 149 },
 };
 
-const TRAVEL_ZONES = { tampa: 0, bradenton: 0, sarasota: 25 };
+const TRAVEL_ZONES = { tampa: 0, bradenton: 0, sarasota: 0 };
 
 function stripeConfigured() {
   return !!(process.env.STRIPE_SECRET_KEY && process.env.STRIPE_SECRET_KEY.startsWith('sk_'));
