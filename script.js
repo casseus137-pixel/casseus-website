@@ -796,6 +796,7 @@
       packageSelect.value = pkgId;
       packageGroup.style.display = 'block';
       updatePaymentVisibility();
+      updateLocationRequirement();
     }
     selectedPackageId = null;
     currentWaiverSignature = null;
@@ -1372,11 +1373,31 @@
     }
   }
 
+  // Virtual services are delivered online — no service location or street
+  // address is needed, so those fields are optional for virtual bookings
+  // and stay required for in-person services.
+  const VIRTUAL_SERVICE_TYPES = ['vstretch30', 'vstretch60', 'vpt30', 'vpt60', 'vcoaching'];
+  function isVirtualService(type) {
+    return VIRTUAL_SERVICE_TYPES.indexOf(type) !== -1;
+  }
+  function updateLocationRequirement() {
+    const virtual = isVirtualService(serviceType.value);
+    const addressEl = document.getElementById('address');
+    const locationLabel = document.querySelector('label[for="location"]');
+    const addressLabel = document.querySelector('label[for="address"]');
+    if (locationSelect) locationSelect.required = !virtual;
+    if (addressEl) addressEl.required = !virtual;
+    if (locationLabel) locationLabel.textContent = virtual ? 'Service Location (optional — virtual session)' : 'Service Location *';
+    if (addressLabel) addressLabel.textContent = virtual ? 'Full Address / Meeting Spot (optional — virtual session)' : 'Full Address / Meeting Spot *';
+  }
+
   serviceType.addEventListener('change', () => {
     updatePackageOptions();
     updatePaymentVisibility();
     updateTravelSummary();
+    updateLocationRequirement();
   });
+  updateLocationRequirement();
 
   packageSelect.addEventListener('change', () => {
     updatePaymentVisibility();
@@ -1673,7 +1694,8 @@
     const notes = document.getElementById('notes').value.trim();
     const pkgId = packageSelect.value;
 
-    if (!type || !date || !time || !name || !phone || !email || !location || !address) {
+    const locationRequired = !isVirtualService(type);
+    if (!type || !date || !time || !name || !phone || !email || (locationRequired && (!location || !address))) {
       showToast('Please fill in all required fields.', 'error');
       return;
     }
@@ -1797,6 +1819,7 @@
     updateTimeSlots();
     renderBookings();
     bookingForm.reset();
+    updateLocationRequirement();
     sessionDate.value = today;
     packageGroup.style.display = 'none';
     paymentSection.style.display = 'block';
