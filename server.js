@@ -510,6 +510,10 @@ async function handleApi(req, res, pathname) {
       amount: Number(body.amount) || 0,
       travelFee: Number(body.travelFee) || 0,
       packageUsed: body.packageUsed || null,
+      waiverSignedBy: body.waiverSignedBy || null,
+      waiverSignedAt: body.waiverSignedAt || null,
+      waiverVersion: body.waiverVersion || null,
+      waiverSignatureImage: body.waiverSignatureImage || null,
       createdAt: new Date().toISOString(),
     };
     appendList('bookings', booking);
@@ -523,6 +527,8 @@ async function handleApi(req, res, pathname) {
       Location: booking.location,
       Address: booking.address,
       Amount: '$' + Number(booking.amount).toFixed(2),
+      Waiver: booking.waiverSignedBy ? ('Signed by ' + booking.waiverSignedBy + ' (' + (booking.waiverVersion || 'LW-2026-01') + ')') : 'NOT SIGNED',
+      Payment: 'Not required to book — due at session',
     });
     const mailResult = await sendMail({
       to: OWNER_EMAIL, subject: mail.subject, text: mail.text, html: mail.html, replyTo: booking.email,

@@ -303,6 +303,11 @@
   let currentWaiverSignature = null;
   let currentIntakeData = null;
   let currentRefundPolicySignature = null;
+  // The waiver modal serves two flows: 'package' (buy a package → intake →
+  // payment) and 'booking' (book an appointment → sign, then return to the
+  // booking form; no payment is required to book).
+  let waiverContext = 'package';
+  let bookingWaiverSignature = null;
 
   // ========== Waiver & Intake Helpers ==========
   function getWaivers() {
@@ -427,16 +432,24 @@
     clearWaiverSignature.addEventListener('click', () => waiverPad.clear());
   }
 
-  function openWaiverModal() {
+  function openWaiverModal(context) {
+    waiverContext = context === 'booking' ? 'booking' : 'package';
     waiverAgree.checked = false;
     const rAgree = document.getElementById('combinedRefundAgree');
     if (rAgree) rAgree.checked = false;
     const esign = document.getElementById('waiverEsignConsent');
     if (esign) esign.checked = false;
     waiverName.value = '';
+    if (waiverContext === 'booking') {
+      const cn = document.getElementById('clientName');
+      if (cn && cn.value.trim()) waiverName.value = cn.value.trim();
+    }
     waiverDate.value = new Date().toLocaleDateString('en-US', {
       year: 'numeric', month: 'long', day: 'numeric'
     });
+    signWaiverBtn.textContent = waiverContext === 'booking'
+      ? 'Sign Once & Return to Booking'
+      : 'Sign Once & Continue to Intake Form';
     currentWaiverSignature = null;
     currentIntakeData = null;
     currentRefundPolicySignature = null;
@@ -444,6 +457,16 @@
       setTimeout(() => { waiverPad.ratio(); waiverPad.clear(); }, 50);
     }
     waiverModal.classList.add('open');
+  }
+
+  function updateBookingWaiverStatus() {
+    const el = document.getElementById('bookingWaiverStatus');
+    if (!el) return;
+    if (bookingWaiverSignature) {
+      el.innerHTML = '<i class="fas fa-check-circle"></i> Liability Waiver &amp; Agreement signed by <strong>' + escapeHtml(bookingWaiverSignature.name) + '</strong>';
+    } else {
+      el.innerHTML = '<i class="fas fa-exclamation-circle" style="color:#c62828;"></i> Waiver &amp; agreement not signed yet — required to book';
+    }
   }
 
   function openIntakeModal() {
@@ -573,6 +596,20 @@
     };
 
     waiverModal.classList.remove('open');
+    if (waiverContext === 'booking') {
+      // Appointment booking: the signed waiver & agreement is the ONLY
+      // requirement — no payment, no intake. Keep the signature for the
+      // booking record and return to the booking form.
+      bookingWaiverSignature = currentWaiverSignature;
+      saveWaiver(currentWaiverSignature);
+      currentWaiverSignature = null;
+      currentRefundPolicySignature = null;
+      updateBookingWaiverStatus();
+      showToast('Waiver & agreement signed — you can now confirm your booking.');
+      const bkSection = document.getElementById('bookingWaiverSection');
+      if (bkSection) bkSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
     openIntakeModal();
   });
 
@@ -1346,7 +1383,7 @@
       if (owned) {
         priceSummary.innerHTML = '<strong>Price summary</strong><br>' +
           label + ': <strong>$' + price + '</strong> — covered by your package<br>' +
-          'Total due: <strong>$' + travel.fee + '</strong>';
+          'Due at your session: <strong>$' + travel.fee + '</strong>';
         priceSummary.classList.add('visible');
         return;
       }
@@ -1356,21 +1393,14 @@
     }
     priceSummary.innerHTML = '<strong>Price summary</strong><br>' +
       label + ': <strong>$' + price + '</strong><br>' +
-      'Total due: <strong>$' + (price + travel.fee) + '</strong>';
+      'Due at your session: <strong>$' + (price + travel.fee) + '</strong>';
     priceSummary.classList.add('visible');
   }
 
   function updatePaymentVisibility() {
-    const type = serviceType.value;
-    const pkgId = packageSelect.value;
-    const purchased = getPurchasedPackages();
-    const ownsPackage = pkgId && purchased.some(p => p.id === pkgId && p.sessionsRemaining > 0);
-
-    if (type === 'free15' || ownsPackage) {
-      paymentSection.style.display = 'none';
-    } else {
-      paymentSection.style.display = 'block';
-    }
+    // Payment is never required to book an appointment, so the payment
+    // section is informational only (pay at your session) and always shows.
+    paymentSection.style.display = 'block';
   }
 
   // Virtual services are delivered online — no service location or street
@@ -1679,6 +1709,12 @@
   // Initial
   updateTimeSlots();
 
+  // Booking waiver button: opens the waiver modal in booking context
+  const openBookingWaiverBtn = document.getElementById('openBookingWaiverBtn');
+  if (openBookingWaiverBtn) {
+    openBookingWaiverBtn.addEventListener('click', () => openWaiverModal('booking'));
+  }
+
   // ========== Submit Booking ==========
   bookingForm.addEventListener('submit', async function (e) {
     e.preventDefault();
@@ -1697,6 +1733,13 @@
     const locationRequired = !isVirtualService(type);
     if (!type || !date || !time || !name || !phone || !email || (locationRequired && (!location || !address))) {
       showToast('Please fill in all required fields.', 'error');
+      return;
+    }
+
+    if (!bookingWaiverSignature) {
+      showToast('Please sign the Liability Waiver & Agreement before booking — no payment is required.', 'error');
+      const bkSection = document.getElementById('bookingWaiverSection');
+      if (bkSection) bkSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
@@ -1729,46 +1772,7 @@
     const travelFee = parseInt(travelSummary.dataset.fee || '0', 10);
     const total = amount + travelFee;
 
-    // Paid singles: send to Stripe Checkout when configured
-    if (total > 0) {
-      const payBtn = document.getElementById('submitBooking');
-      if (payBtn) {
-        payBtn.disabled = true;
-        payBtn.textContent = 'Connecting to Stripe…';
-      }
-      try {
-        const session = await apiFetch('/api/stripe/create-checkout-session', {
-          method: 'POST',
-          body: JSON.stringify({
-            kind: 'session',
-            serviceType: type,
-            location,
-            date,
-            time,
-            email,
-            name,
-            phone,
-            address,
-            notes,
-          }),
-        });
-        if (session && session.url) {
-          sessionStorage.setItem('casseus_pending_booking', JSON.stringify({
-            service: SERVICE_LABELS[type] || type, type, date, time, name, phone, email,
-            location, address, notes, amount: total, travelFee, packageUsed,
-          }));
-          window.location.href = session.url;
-          return;
-        }
-      } catch (err) {
-        showToast('Stripe not connected — session will be booked and you can pay by arrangement.', 'error');
-      } finally {
-        if (payBtn) {
-          payBtn.disabled = false;
-          payBtn.textContent = 'Confirm & Book Session';
-        }
-      }
-    }
+    // No payment is required to book (Will's rule, 2026-11-12): the signed waiver & agreement is the only requirement. Payment is collected at the session.
 
     // Create booking
     const booking = {
@@ -1786,6 +1790,10 @@
       amount: total,
       travelFee,
       packageUsed,
+      waiverSignedBy: bookingWaiverSignature ? bookingWaiverSignature.name : null,
+      waiverSignedAt: bookingWaiverSignature ? bookingWaiverSignature.date : null,
+      waiverVersion: bookingWaiverSignature ? bookingWaiverSignature.version : null,
+      waiverSignatureImage: bookingWaiverSignature ? bookingWaiverSignature.signatureImage : null,
       createdAt: new Date().toISOString(),
     };
 
@@ -1819,6 +1827,8 @@
     updateTimeSlots();
     renderBookings();
     bookingForm.reset();
+    bookingWaiverSignature = null;
+    updateBookingWaiverStatus();
     updateLocationRequirement();
     sessionDate.value = today;
     packageGroup.style.display = 'none';

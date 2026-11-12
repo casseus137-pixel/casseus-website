@@ -1066,7 +1066,14 @@ h1,h2,h3,h4,.logo-main,.stat-num{font-family:Montserrat,system-ui,sans-serif}
 
             <div class="payment-section" id="paymentSection">
               <h4>Payment</h4>
-              <p class="payment-note">If this session is not covered by an active package, you will pay securely through Stripe (cards, Apple Pay, Google Pay, Cash App Pay, bank, and more). Cash, Cash App, PayPal, Zelle, or Venmo by arrangement — text 240-571-7253.</p>
+              <p class="payment-note"><strong>No payment is required to book your appointment.</strong> Your booking is confirmed once you sign the liability waiver &amp; agreement below. If your session isn't covered by an active package, you simply pay at your session — cash, Cash App, PayPal, or Venmo.</p>
+            </div>
+
+            <div class="payment-section" id="bookingWaiverSection">
+              <h4>Liability Waiver &amp; Agreement</h4>
+              <p class="payment-note">The only requirement to book: read and sign the Liability Waiver &amp; Safety Disclosure and the Return &amp; Refund Policy. One signature covers both — it takes about a minute.</p>
+              <div class="waiver-status" id="bookingWaiverStatus"><i class="fas fa-exclamation-circle" style="color:#c62828;"></i> Waiver &amp; agreement not signed yet — required to book</div>
+              <button type="button" class="btn btn-outline btn-block" id="openBookingWaiverBtn" style="margin-top:10px;">Read &amp; Sign Waiver &amp; Agreement</button>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block" id="submitBooking">Confirm & Book Session</button>
